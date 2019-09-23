@@ -1,0 +1,536 @@
+﻿@{
+    ViewBag.Title = "Game Time - Interaction Graph";
+}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<style>
+    .aboutimg {
+        height: 60vh;
+        min-height: 500px;
+        background-image: url('../../img/game-time-banner.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 60vh;
+        min-height: 500px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .7;
+    }
+
+    .setsizeimg {
+        max-height: 100px;
+        max-width: 100px;
+    }
+
+    .chart {
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .showcase .showcase-img {
+        min-height: 30rem;
+        background-size: cover;
+    }
+
+    .title1 {
+        letter-spacing: -.75px;
+        font-family: serif;
+        font-weight: 700;
+        margin: 0 0 25px;
+        font-size: 50px
+    }
+
+    .describ {
+        font-size: 25px;
+    }
+
+    .custom-control-label a {
+        cursor: pointer;
+    }
+</style>
+
+<div class="aboutimg">
+    <div class="overlay-div"></div> <!-- the new div -->
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h2 class="hero-title text-white title1"><b>Video game usage</b></h2>
+                <p class="describ text-white text-center">How much time does your child spend playing video games?</p>
+                <p class="describ text-white text-center">Is he/she following the recommended guideline?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="page-section" id="services" style="background-color:#f8f9fa">
+    <div class="container">
+        <div class="row text-center pt-4 pb-4">
+            <div class="col-md-4">
+                <div class="card shadow p-3 bg-white rounded h-100">
+                    <div class="card-body">
+                        <h4 class="service-heading">Gamer Percentage Among Children</h4>
+                        <p class="text-muted">
+                            Usage of video games by kids between <b>age 5 and 14</b> is very high in the last few years.
+                            <b>More than 80% </b>kids play game regularly in 2019.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow p-3 bg-white rounded h-100">
+                    <div class="card-body">
+                        <h4 class="service-heading">Game and Psychological Well-being</h4>
+                        <p class="text-muted">
+                            A research study in Britain suggested that children play <strong>video game within one hour</strong> can have positive effect on their psychological well-being.
+                            However, on average, most children aged 5-14 spend <strong>around 81 mins</strong> playing game daily.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow p-3 bg-white rounded h-100">
+                    <div class="card-body">
+                        <h4 class="service-heading">Online Game and Bullying</h4>
+                        <p class="text-muted">
+                            Online games with multiplayer are very popular among young Australians aged 8-17 years old.
+                            Roughly, an estimated <b>17% or more than 200,000</b> young gamers experienced in-game bullying.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal: Casual Game -->
+<div class="modal fade" id="CasualGameInfo" tabindex="-1" role="dialog" aria-labelledby="CasualGame" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CasualGameInfo">Casual Game</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Casual game is normally played on mobile or tablet devices with short period of game time but with high frequency.
+                Casual game can be played from 5 to 20 minutes on a commute train for instance.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: In-depth Game -->
+<div class="modal fade" id="InDepthGameInfo" tabindex="-1" role="dialog" aria-labelledby="InDepthGame" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="InDepthGameInfo">In-depth Game</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                In-depth came is played on gaming devices such as gaming console and PC in which players spend longer time per session.
+                Players typically spend around 1 hour to 2 hours for an in-depth gaming session.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="showcase">
+    <div class="container">
+        @* Bullying Percentage Chart *@
+        <div class="row mb-3 mt-3 pb-3 border-bottom">
+            <div id="BullyingPercentChart" class="chart col-lg-6"></div>
+            <div class="col-lg-6 pt-3">
+                <h3>Bullying Prevalence in Australia</h3>
+                <p class="lead mb-0">
+                    The <strong>highest instances of online-game bullying</strong> happened to gamers aged between
+                    <strong>11 and 12 years old</strong> accounting for <strong>22%</strong> in 12 months to June 2017. In addition,
+                    we saw <strong>positive correlation between bullying and gamer age</strong> represented by the
+                    <strong>red line</strong> on the chart.
+                </p>
+            </div>
+        </div>
+
+        @* Interactive Graphs *@
+        <div class="row mb-3 mt-3">
+            @* Option Control Section *@
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-header font-weight-bold">Interactive Charts - Filter Options</div>
+                    <div class="card-body">
+                        <!-- Age Group Section -->
+                        <div class="row font-weight-bold pl-3">Age Group</div>
+                        <div class="form-group row pl-3">
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input alt="1-4" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_1" checked onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="age_group_1">1-4</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input alt="5-14" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_5" checked onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="age_group_5">5-14</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input alt="15-24" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_15" checked onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="age_group_15">15-24</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input alt="25-34" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_25" checked onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="age_group_25">25-34</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input alt="35-44" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_35" checked onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="age_group_35">35-44</label>
+                            </div>
+                        </div>
+
+                        <!-- Game Session Section -->
+                        <div class="row font-weight-bold pl-3">Game Session</div>
+                        <div class="form-group row pl-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="game_session_both" name="rdb_game_session"
+                                       class="custom-control-input" checked
+                                       onchange="intraction_option_changed()">
+                                <label class="custom-control-label" for="game_session_both">Both</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="game_session_casual" name="rdb_game_session"
+                                       class="custom-control-input"
+                                       onchange="intraction_option_changed()">
+                                <label class="custom-control-label" for="game_session_casual">
+                                    Casual
+                                    <a data-toggle="modal" data-target="#CasualGameInfo" title="Click for more information!"><img src="~/img/information-icon-16x16.png" /></a>
+                                </label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="game_session_indepth" name="rdb_game_session"
+                                       class="custom-control-input"
+                                       onchange="intraction_option_changed()">
+                                <label class="custom-control-label" for="game_session_indepth">
+                                    In-depth
+                                    <a data-toggle="modal" data-target="#InDepthGameInfo" title="Click for more information!"><img src="~/img/information-icon-16x16.png" /></a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Year Section -->
+                        <div class="row font-weight-bold pl-3">Year</div>
+                        <div class="form-group row pl-3">
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="year_2015" checked
+                                       onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="year_2015">2015</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="year_2017" checked
+                                       onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="year_2017">2017</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" id="year_2019" checked
+                                       onchange="intraction_option_changed()" />
+                                <label class="custom-control-label" for="year_2019">2019</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* Graph Section *@
+            <div class="col-md-8">
+                @* Gamer Percentage by Age Group Graph *@
+                <div class="row pb-3 border-bottom">
+                    <div id="GamerPercentageChart" class="chart"></div>
+                </div>
+
+                @* Male Game Time Graph *@
+                <div class="row pb-3 border-bottom">
+                    <div id="MaleGameTimeChart" class="chart"></div>
+                </div>
+
+                @* Female Game Time Graph *@
+                <div class="row mb-3">
+                    <div id="FemaleGameTimeChart" class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawBullyingPercentChart);
+    google.charts.setOnLoadCallback(drawGamerPercentAgeGroupChart);
+    google.charts.setOnLoadCallback(drawGameTime);
+    window.onresize = function () {
+        drawBullyingPercentChart();
+        drawGameTime();
+        drawGamerPercentAgeGroupChart();
+    }
+    function drawBullyingPercentChart() {
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Age');
+        data.addColumn('number', 'Percentage');
+        data.addRows([
+            [8, 0.11],
+            [9, 0.12],
+            [10, 0.12],
+            [11, 0.22],
+            [12, 0.21],
+            [13, 0.12],
+            [14, 0.19],
+            [15, 0.19],
+            [16, 0.18],
+            [17, 0.2]
+        ]);
+        var options = {
+            title: 'Prevalence of Bullying Amongst Game Players',
+            titleTextStyle: { bold: false, fontSize: 18 },
+            colors: ["#e1e7e7", "#ef5255"],
+            fontName: 'Verdana',
+            chartArea: { left: 60, top: 50, width: '90%', height: '73%' },
+            //lengend: { position: 'in', alignment: 'end' },
+            hAxis: { title: 'Age', gridlines: { color: 'white' }, ticks: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
+            vAxis: { format: 'percent', gridlines: { color: 'white' }, minValue: 0 },
+            trendlines: {
+                0: {
+                    type: 'linear',
+                    color: "#ef5255",
+                    opacity: 0.5,
+                    lineWidth: 3
+                }
+            }
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('BullyingPercentChart'));
+        chart.draw(data, options);
+    }
+    function drawGamerPercentAgeGroupChart() {
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Age Group');
+        data.addColumn('number', '2015');
+        data.addColumn('number', '2017');
+        data.addColumn('number', '2019');
+        data.addRows([
+            ["1-4", 0.39, 0.36, 0.25],
+            ["5-14", 0.91, 0.9, 0.81],
+            ["15-24", 0.84, 0.82, 0.83],
+            ["25-34", 0.85, 0.75, 0.75],
+            ["35-44", 0.76, 0.69, 0.63]
+        ]);
+        var data_view = new google.visualization.DataView(data);
+        var selected_years = [0];
+        if (document.getElementById("year_2015").checked) selected_years.push(1);
+        if (document.getElementById("year_2017").checked) selected_years.push(2);
+        if (document.getElementById("year_2019").checked) selected_years.push(3);
+        var data_index = [];
+        // Get the array of checkbox based on input name: chk_age_group
+        chk_age_groups = document.getElementsByName("chk_age_group");
+        for (var i = 0; i < chk_age_groups.length; i++) {
+            // check if the checkbox of that age-group is selected
+            if (chk_age_groups[i].checked) {
+                // fileter original DataTable with the following filters for Female data.
+                var selected_row_index = data_view.getFilteredRows([
+                    { column: 0, value: chk_age_groups[i].alt }
+                ]);
+                // append the selected row index into the array: female_data_index
+                data_index = data_index.concat(selected_row_index);
+            }
+        }
+        // Filter for Female Data
+        data_view.setRows(data_index);
+        data_view.setColumns(selected_years);
+        var options = {
+            title: 'Percentage of Gamer Within Each Group',
+            titleTextStyle: { bold: false, fontSize: 18 },
+            colors: ["#e1e7e7", "#07abcc", "#e2bb8b"],
+            fontName: 'Verdana',
+            chartArea: { left: 60, top: 50, width: '90%', height: '73%' },
+            legend: { position: 'in', alignment: 'end' },
+            hAxis: { title: 'Age Group' },
+            vAxis: { format: 'percent', gridlines: { color: 'white' }, minValue: 0 }
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById('GamerPercentageChart'));
+        chart.draw(data_view, options);
+    }
+    function intraction_option_changed() {
+        drawGameTime();
+        drawGamerPercentAgeGroupChart();
+    }
+    function drawGameTime() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', "Gender");
+        data.addColumn('string', "Age Group");
+        data.addColumn('string', "Session");
+        data.addColumn('number', "2015");
+        data.addColumn('number', "2017");
+        data.addColumn('number', "2019");
+        data.addColumn('number', "Recommendation");
+        data.addColumn({ type: 'string', role: 'annotation' });
+        data.addColumn({ type: 'string', role: 'tooltip' });
+        data.addRows([
+            ["M", "1-4", "Both", 57, 38, 100, 60, '', getTooltipText()],
+            ["M", "1-4", "Casual", 18, 7, 21, 60, '', getTooltipText()],
+            ["M", "1-4", "In-depth", 39, 35, 79, 60, '', getTooltipText()],
+            ["M", "5-14", "Both", 112, 110, 81, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["M", "5-14", "Casual", 28, 26, 20, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["M", "5-14", "In-depth", 90, 80, 58, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["M", "15-24", "Both", 148, 156, 130, 60, '', getTooltipText()],
+            ["M", "15-24", "Casual", 27, 33, 26, 60, '', getTooltipText()],
+            ["M", "15-24", "In-depth", 118, 124, 118, 60, '', getTooltipText()],
+            ["M", "25-34", "Both", 100, 115, 100, 60, '', getTooltipText()],
+            ["M", "25-34", "Casual", 25, 27, 19, 60, '', getTooltipText()],
+            ["M", "25-34", "In-depth", 75, 90, 83, 60, '', getTooltipText()],
+            ["M", "35-44", "Both", 90, 90, 80, 60, '', getTooltipText()],
+            ["M", "35-44", "Casual", 25, 27, 21, 60, '', getTooltipText()],
+            ["M", "35-44", "In-depth", 68, 63, 60, 60, '', getTooltipText()],
+            ["F", "1-4", "Both", 33, 12, 65, 60, '', getTooltipText()],
+            ["F", "1-4", "Casual", 11, 7, 39, 60, '', getTooltipText()],
+            ["F", "1-4", "In-depth", 20, 12, 22, 60, '', getTooltipText()],
+            ["F", "5-14", "Both", 70, 63, 62, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["F", "5-14", "Casual", 24, 22, 17, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["F", "5-14", "In-depth", 50, 50, 42, 60, 'Recommended Game Time: 1h', getTooltipText()],
+            ["F", "15-24", "Both", 86, 85, 81, 60, '', getTooltipText()],
+            ["F", "15-24", "Casual", 29, 22, 22, 60, '', getTooltipText()],
+            ["F", "15-24", "In-depth", 60, 63, 59, 60, '', getTooltipText()],
+            ["F", "25-34", "Both", 85, 84, 83, 60, '', getTooltipText()],
+            ["F", "25-34", "Casual", 29, 28, 24, 60, '', getTooltipText()],
+            ["F", "25-34", "In-depth", 57, 57, 56, 60, '', getTooltipText()],
+            ["F", "35-44", "Both", 70, 75, 70, 60, '', getTooltipText()],
+            ["F", "35-44", "Casual", 27, 27, 20, 60, '', getTooltipText()],
+            ["F", "35-44", "In-depth", 48, 50, 53, 60, '', getTooltipText()]
+        ]);
+        // DataView for Male and Female Data
+        var female_view = new google.visualization.DataView(data);
+        var male_view = new google.visualization.DataView(data);
+        // Interaction Options on the Charts
+        var rdb_game_session = document.getElementsByName("rdb_game_session");
+        var selected_session = "";
+        var max_duration = 0;
+        var chart_title = "Daily Average Game Time";
+        // Check for Game Session
+        if (rdb_game_session[0].checked) {
+            selected_session = "Both";
+            max_duration = 160;
+        }
+        else if (rdb_game_session[1].checked) {
+            selected_session = "Casual";
+            max_duration = 70;
+            chart_title = selected_session + " " + chart_title;
+        }
+        else {
+            selected_session = "In-depth";
+            max_duration = 130;
+            chart_title = selected_session + " " + chart_title;
+        }
+        // Check for Year
+        var selected_years = [1, 6, 7, 8];
+        if (document.getElementById("year_2015").checked) selected_years.push(3);
+        if (document.getElementById("year_2017").checked) selected_years.push(4);
+        if (document.getElementById("year_2019").checked) selected_years.push(5);
+        //selected_years.push(8);
+        // ==========================================================================
+        // Find data row index based on selected age-groups
+        // ==========================================================================
+        var female_data_index = [];
+        var male_data_index = [];
+        // Get the array of checkbox based on input name: chk_age_group
+        chk_age_groups = document.getElementsByName("chk_age_group");
+        for (var i = 0; i < chk_age_groups.length; i++) {
+            // check if the checkbox of that age-group is selected
+            if (chk_age_groups[i].checked) {
+                // fileter original DataTable with the following filters for Female data.
+                var female_selected_row_index = female_view.getFilteredRows([
+                    { column: 0, value: 'F' },
+                    { column: 1, value: chk_age_groups[i].alt },
+                    { column: 2, value: selected_session }
+                ]);
+                // append the selected row index into the array: female_data_index
+                female_data_index = female_data_index.concat(female_selected_row_index);
+                // fileter original DataTable with the following filters for Male data.
+                var male_selected_row_index = male_view.getFilteredRows([
+                    { column: 0, value: 'M' },
+                    { column: 1, value: chk_age_groups[i].alt },
+                    { column: 2, value: selected_session }
+                ]);
+                // append the selected row index into the array: male_data_index
+                male_data_index = male_data_index.concat(male_selected_row_index);
+            }
+        }
+        // Filter for Female Data
+        female_view.setRows(female_data_index);
+        female_view.setColumns(selected_years);
+        // Filter for Male Data
+        male_view.setRows(male_data_index);
+        male_view.setColumns(selected_years);
+        // Set chart options: Female chart
+        var options_female_chart = {
+            title: 'Female Player: ' + chart_title,
+            titleTextStyle: { fontSize: 18, bold: false },
+            fontName: 'Verdana',
+            pointSize: 3,
+            colors: ["#ef5255", "#e1e7e7", "#07abcc", "#e2bb8b"],
+            chartArea: { left: 60, top: 50, width: '90%', height: '75%' },
+            legend: { position: 'in', alignment: 'end' },
+            vAxis: {
+                title: "Duration (mins)",
+                maxValue: max_duration,
+                gridlines: { color: 'f6f6f6' }
+            },
+            hAxis: { title: "Age Group" },
+            seriesType: 'bars',
+            series: { 0: { type: 'line' } },
+            tooltip: { isHtml: true }
+        };
+        // Set chart options: Male chart
+        var options_male_chart = {
+            title: 'Male Player: ' + chart_title,
+            titleTextStyle: { fontSize: 18, bold: false },
+            fontName: 'Verdana',
+            pointSize: 3,
+            colors: ["#ef5255", "#e1e7e7", "#07abcc", "#e2bb8b"],
+            chartArea: { left: 60, top: 50, width: '90%', height: '75%' },
+            legend: { position: 'in', alignment: 'end' },
+            vAxis: {
+                title: "Duration (mins)",
+                maxValue: max_duration,
+                gridlines: { color: 'f6f6f6' }
+            },
+            hAxis: { title: "Age Group" },
+            seriesType: 'bars',
+            series: { 0: { type: 'line' } },
+            tooltip: { isHtml: true }
+        };
+        var chart_female = new google.visualization.ComboChart(document.getElementById('FemaleGameTimeChart'));
+        chart_female.draw(female_view, options_female_chart);
+        var chart_male = new google.visualization.ComboChart(document.getElementById('MaleGameTimeChart'));
+        chart_male.draw(male_view, options_male_chart);
+    }
+    function getTooltipText() {
+        return "A research in Britain suggested that video game has positive effect on " +
+            "children's psychological well-being. The recommended game time is one hour a day.";
+    }
+</script>

@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "quizTest";
+}
+<head>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://surveyjs.azureedge.net/1.1.6/survey.jquery.js"></script>
+    <link href="https://surveyjs.azureedge.net/1.1.6/survey.css" type="text/css" rel="stylesheet" />
+</head>
+<style>
+    .aboutimg {
+        height: 100vh;
+        min-height: 500px;
+        background-image: url('../../img/question.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 100vh;
+        min-height: 500px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .7;
+    }
+
+    .setsizeimg {
+        max-height: 100px;
+        max-width: 100px;
+    }
+</style>
+
+<style>
+    .question {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .answers {
+        margin-bottom: 20px;
+        text-align: left;
+        display: inline-block;
+    }
+
+        .answers label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+    button {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 22px;
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 3px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+        button:hover {
+            background-color: #38a;
+        }
+
+    .slide {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .active-slide {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .quiz-container {
+        position: relative;
+        height: 200px;
+        margin-top: 40px;
+    }
+
+    .black_overlay {
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 1001;
+        opacity: .80;
+        filter: alpha(opacity=88);
+    }
+
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 55%;
+        height: 55%;
+        padding: 20px;
+        background-color: white;
+        z-index: 1002;
+        overflow: auto;
+    }
+</style>
+
+<div class="aboutimg">
+    <div class="overlay-div"></div> <!-- the new div -->
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 class="font-weight-light text-white ">Want to know early signs of Video Game Addiction?</h1>
+                <p class="lead text-white">Take a short quiz to know more!</p>
+                <div class="form-row text-center">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="light" class="white_content">
+    <div id="surveyElement"></div>
+    <div id="surveyResult"></div>
+    <a id="surveyComplete" href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Leave</a>
+    <hr />
+</div>
+
+    <script>
+        var json = {
+            title: "Vedio Game Addiction",
+            showProgressBar: "bottom",
+            maxTimeToFinishPage: 20,
+            maxTimeToFinish: 100,
+            firstPageIsStarted: true,
+            startSurveyText: "Start Quiz",
+            pages: [
+                {
+                    questions: [
+                        {
+                            type: "html",
+                            html: "You are about to start quiz about Video Game Addiction.<br><b>Note:</b> This quiz is for indicative purpose only.</br> <br/>The quiz consists of 5 questions.<br/>Please click on <b>'Start Quiz'</b> button when you are ready."
+                        }
+                    ]
+                }, {
+                    questions: [
+                        {
+                            type: "radiogroup",
+                            name: "wantToPlayOnRest",
+                            title: "Does your child think about playing video games even when he/she is not playing?",
+                            choices: [
+                                "Yes", "No"
+                            ],
+                            correctAnswer: "Yes"
+                        }
+                    ]
+                }, {
+                    questions: [
+                        {
+                            type: "radiogroup",
+                            name: "emotion",
+                            title: "Does your child become angry or depressed or bored when he/she can not play games?'",
+                            choices: [
+                                "Yes", "No"
+                            ],
+                            correctAnswer: "Yes"
+                        }
+                    ]
+                }, {
+                    maxTimeToFinish: 20,
+                    questions: [
+                        {
+                            type: "radiogroup",
+                            name: "lost",
+                            title: "Does your child show no interest in spending time with friends or family or is ignoring people regularly?",
+                            choices: [
+                                "Yes", "No"
+                            ],
+                            correctAnswer: "Yes"
+                        }
+                    ]
+                },
+                {
+                    maxTimeToFinish: 20,
+                    questions: [
+                        {
+                            type: "radiogroup",
+                            name: "lie",
+                            title: "Has your child been deceptive, or lied to family, friends, or others about how much he/she play video games?",
+                            choices: [
+                                "Yes", "No"
+                            ],
+                            correctAnswer: "Yes"
+                        }
+                    ]
+                },
+                {
+                    maxTimeToFinish: 20,
+                    questions: [
+                        {
+                            type: "radiogroup",
+                            name: "lie",
+                            title: "Has your child's grade been degrading continuously or does not show much interest in going school and has interest in playing video games only?",
+                            choices: [
+                                "Yes", "No"
+                            ],
+                            correctAnswer: "Yes"
+                        }
+                    ]
+                }
+            ],
+            completedHtml: "<h4>You have answered Yes <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.Your child may be <b>highly addicted</b> to video games!<h4>Want to know More Detail?</h4>. </h4> <button type='button' onclick = 'learnmore()' >Know More</button>"
+        };
+
+        window.survey = new Survey.Model(json);
+
+        survey
+            .onComplete
+            .add(function (result) {
+                document
+                    .querySelector('#surveyResult')
+            });
+
+        $("#surveyElement").Survey({ model: survey });
+
+        function learnmore() {
+            window.location.href = 'InformationOfVGA';
+        }
+    </script>

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ScreenOut.Team</title>
+    <link rel="icon" href="../../img/screenout-logo.png" type="image/gif" sizes="16x16">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-bottom:0px">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top py-3 ">
+        <div class="container">
+            <a class="navbar-brand" href="https://screenout.team"><img src="../../img/screenout-logo.png" width="50" height="30" class="d-inline-block align-top" alt="">@Html.ActionLink("ScreenOut", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link active" })
+                    </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Research
+                        </a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("Issue and usage of screens", "ScreenTime", "Home", new { @class = "dropdown-item" })
+                            @Html.ActionLink("Video game usage", "GameTime", "Home", new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Educate yourself", "Education", "Home", new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Media-plan", "MediaPlan", "Home", new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About us", "About", "Home", new { @class = "nav-link" })
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid" style="padding-right: 0px; padding-left: 0px;">
+        @RenderBody()
+
+        <div class="container">
+            <footer class="border-top">
+                <p>&copy; @DateTime.Now.Year Screen Out | All Rights Reserved</p>
+            </footer>
+        </div>
+    </div>
+
+    @* Scroll to top button *@
+    <a onclick="scrollToTop()" id="scroll-top"><img src="~/img/arrow-up.png" title="Go Top" /></a>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <style>
+        .navbar {
+            -webkit-transition: padding 0.2s ease;
+            -moz-transition: padding 0.2s ease;
+            -o-transition: padding 0.2s ease;
+            transition: padding 0.2s ease;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar-toggler-icon {
+            color: white !important;
+        }
+
+        .navbar-toggler {
+            color: white !important;
+        }
+
+        .affix {
+            padding-top: 0.2em !important;
+            padding-bottom: 0.2em !important;
+            -webkit-transition: padding 0.2s linear;
+            -moz-transition: padding 0.2s linear;
+            -o-transition: padding 0.2s linear;
+            transition: padding 0.2s linear;
+            background: #273d42;
+        }
+
+        section {
+            min-height: calc(100% - 70px);
+        }
+
+        #scroll-top {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            cursor: pointer; /* Add a mouse pointer on hover */
+        }
+    </style>
+    <script>
+        //Get the scroll-top button
+        var scroll_top_button = document.getElementById("scroll-top");
+        $(window).scroll(function () {
+            /* affix after scrolling 50px */
+            if ($(document).scrollTop() > 50) {
+                $('.navbar').addClass('affix');
+            } else {
+                $('.navbar').removeClass('affix');
+            }
+            // For showing or hiding the scroll top button
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scroll_top_button.style.display = "block";
+            } else {
+                scroll_top_button.style.display = "none";
+            }
+        });
+        // When the user clicks on the button, scroll to the top of the document
+        function scrollToTop() {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
+        }
+    </script>
+</body>
+</html>

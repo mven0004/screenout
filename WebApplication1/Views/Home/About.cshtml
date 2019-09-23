@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<style>
+    .aboutimg {
+        height: 60vh;
+        min-height: 500px;
+        background-image: url('../../img/camera-coffee-composition-1509428.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 60vh;
+        min-height: 500px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .7;
+    }
+
+    .setsizeimg {
+        max-height: 100px;
+        max-width: 100px;
+    }
+
+    .showcase .showcase-img {
+        min-height: 30rem;
+        background-size: cover;
+    }
+
+    .showcase .showcase-text {
+        padding: 7rem;
+    }
+
+    .showcase .showcase-text {
+        padding: 3rem;
+    }
+</style>
+<div class="aboutimg">
+    <div class="overlay-div"></div> <!-- the new div -->
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <p class="lead text-white"></p>
+                <h1 class="font-weight-light text-white ">About Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="showcase">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('../../img/startup.jpg');"></div>
+            <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                <h2>About our team</h2>
+                <p class="lead mb-0">ScreenOut is a web platform designed for parents to know more about\issues related to screen time, which have potential influence over a child's whole life. The website looks to highlight how habits develop in a kid and enforcing a behaviour change required for the parents and their kids as well to address the issue of an overall increase in screen time. </p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 text-white showcase-img" style="background-image: url('../../img/beverage.jpg');"></div>
+            <div class="col-lg-6 my-auto showcase-text">
+                <h2>Our mission</h2>
+                <p class="lead mb-0">ScreenOut is a web platform designed for parents to know more about screen time, which may have potential influence over a child's whole life. This website will highlight how the increase in screen time caused several issues. We have explored some research data on how much screen time is being used by kids and tried to educate parents with building good habits for children. Besides, a family media plan, a reward and track system have been designed for both parents and kids in order to better kids’ behaviors upon screen time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+

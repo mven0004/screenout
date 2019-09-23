@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "mediaplan";
+}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+    .homeimg {
+        height: 100vh;
+        min-height: 400px;
+        background-image: url('../../img/media1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 100vh;
+        min-height: 400px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .2;
+    }
+
+    .banner-content h1 {
+        color: #fff;
+        font-size: 60px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .banner-content h4 {
+        color: #fff;
+    }
+
+    .banner-content .primary-btn {
+        background: #fff;
+        border: 1px solid #fff;
+        color: #15181d;
+        margin-top: 40px;
+    }
+
+    .primary-btn {
+        position: relative;
+        display: inline-block;
+        line-height: 48px;
+        color: #fff;
+        padding: 0px 35px;
+        font-family: "Lora",serif;
+        font-size: 15px;
+        /* font-weight: 400; */
+        outline: none !important;
+        text-align: center;
+        cursor: pointer;
+        text-transform: capitalize;
+        background: #ff573d;
+        border: 1px solid #ff573d;
+        border-radius: 2px;
+        -webkit-transition: all 0.3s ease 0s;
+        -moz-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+    }
+    .bgc {
+    background-image: linear-gradient(to bottom,#f9fbfd 0,#fff 100%);
+}
+</style>
+
+<!-- first part of the page- the background div -->
+<div class="homeimg">
+    <div class="overlay-div"></div>
+    <div class="container h-100">
+        <!-- the inside text container div -->
+        <div class="row fullscreen" style="padding-top:25%">
+            <div class="banner-content col-lg-7">
+                <h1>
+                    CHANGING BEHAVIOURS
+                </h1>
+                <h4>Make a family media plan today. Set guidelines for you and your kids to follow at home. Take control of developing good habits for a better and brighter future. </h4>
+                <a href="#one" class="primary-btn">
+                    Create Plan
+                    <i class="ti-angle-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div><!--./ the background div -->
+<span id="one"></span>
+<section class="bgc" style="padding-top:100px; padding-bottom:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a>
+                    <img src="../../img/form.jpg" alt="Coworking" class="solution" style="max-width:100%">
+                </a>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col-xl-9 col-lg-10">
+                        <div class="card">
+                            <!-- Body -->
+                            <div class="card-body">
+
+                                <!-- Form -->
+                                <form>
+                                    <div class="form-label-group pt-3">
+                                        <label for="parentName">Enter your name:*</label>
+                                        <input type="text" class="form-control form-control-flush col-12" id="parentName" placeholder="" required>
+
+                                    </div>
+                                    <div class="form-label-group pt-3">
+                                        <label for="kidsNameFirs">
+                                            Enter first kid's name:*
+                                        </label>
+                                        <input type="text" class="form-control form-control-flush col-12" id="kidsNameFirst" placeholder="" required>
+
+                                    </div>
+                                    <div class="form-label-group pt-3">
+                                        <label for="kidsAgeFirst">
+                                            Enter age for first kid:*
+                                        </label>
+                                        <input type="text" class="form-control form-control-flush col-12" id="kidsAgeFirst" placeholder="" required>
+
+                                    </div>
+                                    @*<div class="form-label-group pt-3">
+                                        <label for="kidsNameSecond">
+                                            Enter second kid's name:
+                                        </label>
+                                        <input type="text" class="form-control form-control-flush col-12" id="kidsNameSecond" placeholder="">
+
+                                    </div>
+                                    <div class="form-label-group pt-3">
+                                        <label for="kidAgeSecond">
+                                            Enter age for second kid:
+                                        </label>
+                                        <input type="text" class="form-control form-control-flush col-12" id="kidAgeSecond" placeholder="">
+
+                                    </div>*@
+                                    <div class="pt-3">
+                                        <button class="btn btn-block btn-success lift" type="button" onclick="validation()">
+                                            Create Your Plan
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+</div>
+
+        </div>
+    </div>
+</section>
+<script>
+    $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .click(function (event) {
+            // On-page links
+            if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                &&
+                location.hostname == this.hostname
+            ) {
+                // Figure out element to scroll to
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                // Does a scroll target exist?
+                if (target.length) {
+                    // Only prevent default if animation is actually gonna happen
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000, function () {
+                        // Callback after animation
+                        // Must change focus!
+                        var $target = $(target);
+                        $target.focus();
+                        if ($target.is(":focus")) { // Checking if the target was focused
+                            return false;
+                        } else {
+                            $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                            $target.focus(); // Set focus again
+                        };
+                    });
+                }
+            }
+        });
+</script>
+
+<script>
+    function validation() {
+        var age = +document.getElementById('kidsAgeFirst').value;
+
+        //var age2 = +document.getElementById('kidAgeSecond').value;
+
+        var name = document.getElementById('parentName').value
+
+        var childFname = document.getElementById('kidsNameFirst').value
+
+
+        if (!(age > 1 && age < 100)) {
+
+            alert("The age must be a number between 1 and 100");
+            return false;
+        }
+
+        //if (age2 != "") {
+        //    if (!(age2 > 1 && age2 < 100)) {
+
+        //        alert("The age must be a number between 1 and 100");
+        //        return false;
+        //    }
+        //}
+    localStorage.setItem('parentname', name);
+    localStorage.setItem('childfname', childFname);
+     window.location.href = "plan";
+    }
+
+
+</script>

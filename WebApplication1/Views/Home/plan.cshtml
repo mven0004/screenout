@@ -1,0 +1,288 @@
+﻿
+@{
+    ViewBag.Title = "plan";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<style>
+    .homeimg {
+        height: 70vh;
+        min-height: 400px;
+        background-image: url('../../img/plan1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 70vh;
+        min-height: 400px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .4;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<div class="homeimg">
+    <div class="overlay-div"> </div>
+    <div class="container h-100">
+        <!-- the inside text container div -->
+        <div class="row h-100 align-items-center">
+            <!-- the text row div -->
+            <div class="col-12 text-center">
+                <h2 class="hero-title text-white title1"> <b>CHANGING BEHAVIOURS</b> </h2>
+                <p class="describ text-white text-center" style="font-size:25px"> Make a family media plan today. Set guidelines for you and your kids to follow at home. Take control of developing good habits for a better and brighter future. </p>
+            </div>
+        </div>
+    </div>
+</div><!-- ./ the background div -->
+
+<div class="container">
+    <section style="padding-top:50px">
+
+        <h5 class="text-center">
+            Your family media plan is shown beow. @*There are two plans available, one is for the weekdays*@
+            @*and one is for the weekends.*@
+        </h5>
+        <h5 class="text-center" style="padding-top:50px">
+            Family Media plan @*(Weekdays)*@
+        </h5>
+        <div id="customers">
+            <table>
+                <tr>
+                    <th id="name1"></th>
+                    <th></th>
+                    <th id="name2"></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Screen time    <input id="id1" type="number" min="0" max="10" required style="margin-left:200px"><a id="hide1"></a>hours</td>
+                    <td></td>
+                    <td>Screen time    <input id="id2" type="number" min="0" max="10" required style="margin-left:200px"><a id="hide2"></a>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Work           <input id="id3" type="number" min="0" max="10" required style="margin-left:246px"><span id="hide3"></span>hours</td>
+                    <td></td>
+                    <td>School          <input id="id4" type="number" min="0" max="10" required style="margin-left:236px"><span id="hide4"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sleep          <input id="id5" type="number" min="0" max="10" required style="margin-left:245px"><span id="hide5"></span>hours</td>
+                    <td></td>
+                    <td>Sleep          <input id="id6" type="number" min="0" max="10" required style="margin-left:245px"><span id="hide6"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Food/Eating    <input id="id7" type="number" min="0" max="10" required style="margin-left:197px"><span id="hide7"></span>hours</td>
+                    <td></td>
+                    <td>Food/Eating    <input id="id8" type="number" min="0" max="10" required style="margin-left:197px"><span id="hide8"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Chores/gym     <input id="id9" type="number" min="0" max="10" required style="margin-left:198px"><span id="hide9"></span>hours</td>
+                    <td></td>
+                    <td>Chores/help    <input id="id10" type="number" min="0" max="10" required style="margin-left:198px"><span id="hide10"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Newspaper/Read     <input id="id11" type="number" min="0" max="10" required style="margin-left:164px"><span id="hide11"></span>hours</td>
+                    <td></td>
+                    <td>Sports/outdoors    <input id="id12" type="number" min="0" max="10" required style="margin-left:169px"><span id="hide12"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Spare/family time    <input id="id13" type="number" min="0" max="10" required style="margin-left:161px"><span id="hide13"></span>hours</td>
+                    <td></td>
+                    <td>Read books/homework  <input id="id14" type="number" min="0" max="10" required style="margin-left:121px"><span id="hide14"></span>hours</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input id="id15" type="number" min="0" max="10" required style="display:none"><span id="hide15"></span>others</td>
+                    <td></td>
+                    <td><input id="id16" type="number" min="0" max="10" required style="display:none"><span id="hide16"></span>others</td>
+                </tr>
+            </table>
+            <button class="btn btn-primary" onclick="demoFromHTML()">Download</button>
+        </div>
+        @*<h5 class="text-center" style="padding-top:50px">
+            Family Media plan (Weekends)
+        </h5>
+        <div id="weekend">
+            <table>
+                    <tr>
+                        <th id="name3"></th>
+                        <th></th>
+                        <th id="name4"></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Screen time    <input id="id1" type="number" min="0" max="10" required style="margin-left:200px"><a id="hide17"></a>hours</td>
+                        <td></td>
+                        <td>Screen time    <input id="id2" type="number" min="0" max="10" required style="margin-left:200px"><a id="hide18"></a>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Work           <input id="id3" type="number" min="0" max="10" required style="margin-left:246px"><span id="hide19"></span>hours</td>
+                        <td></td>
+                        <td>Work           <input id="id4" type="number" min="0" max="10" required style="margin-left:246px"><span id="hide20"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sleep          <input id="id5" type="number" min="0" max="10" required style="margin-left:245px"><span id="hide21"></span>hours</td>
+                        <td></td>
+                        <td>Sleep          <input id="id6" type="number" min="0" max="10" required style="margin-left:245px"><span id="hide22"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Food/Eating    <input id="id7" type="number" min="0" max="10" required style="margin-left:197px"><span id="hide23"></span>hours</td>
+                        <td></td>
+                        <td>Food/Eating    <input id="id8" type="number" min="0" max="10" required style="margin-left:197px"><span id="hide24"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chores/gym     <input id="id9" type="number" min="0" max="10" required style="margin-left:201px"><span id="hide25"></span>hours</td>
+                        <td></td>
+                        <td>Chores/help    <input id="id10" type="number" min="0" max="10" required style="margin-left:201px"><span id="hide26"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Newspaper/Read     <input id="id11" type="number" min="0" max="10" required style="margin-left:167px"><span id="hide27"></span>hours</td>
+                        <td></td>
+                        <td>Sports/outdoors    <input id="id12" type="number" min="0" max="10" required style="margin-left:171px"><span id="hide28"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Spare/family time    <input id="id13" type="number" min="0" max="10" required style="margin-left:162px"><span id="hide29"></span>hours</td>
+                        <td></td>
+                        <td>Read books/homework  <input id="id14" type="number" min="0" max="10" required style="margin-left:120px"><span id="hide30"></span>hours</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>others</td>
+                        <td><input id="id15" type="number" min="0" max="10" required style="display:none"><span id="hide31"></span>activities</td>
+                        <td>others</td>
+                        <td><input id="id16" type="number" min="0" max="10" required style="display:none"><span id="hide32"></span>activities</td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary" onclick="demoFromHTML2()">TO PDF</button>
+</div>*@
+    </section>
+</div>
+
+
+<script>
+    var parentname = localStorage.getItem('parentname');
+    var childfname = localStorage.getItem('childfname');
+    document.getElementById("name1").innerHTML = parentname;
+    document.getElementById("name2").innerHTML = childfname;
+    document.getElementById("name3").innerHTML = parentname;
+    document.getElementById("name4").innerHTML = childfname;
+</script>
+
+<script>
+    function demoFromHTML() {
+        document.getElementById("hide1").innerHTML=document.getElementById("id1").value;
+        document.getElementById("hide2").innerHTML=document.getElementById("id2").value;
+        document.getElementById("hide3").innerHTML=document.getElementById("id3").value;
+        document.getElementById("hide4").innerHTML = document.getElementById("id4").value;
+        document.getElementById("hide5").innerHTML=document.getElementById("id5").value;
+        document.getElementById("hide6").innerHTML = document.getElementById("id6").value;
+        document.getElementById("hide7").innerHTML=document.getElementById("id7").value;
+        document.getElementById("hide8").innerHTML = document.getElementById("id8").value;
+        document.getElementById("hide9").innerHTML=document.getElementById("id9").value;
+        document.getElementById("hide10").innerHTML = document.getElementById("id10").value;
+        document.getElementById("hide11").innerHTML=document.getElementById("id11").value;
+        document.getElementById("hide12").innerHTML = document.getElementById("id12").value;
+        document.getElementById("hide13").innerHTML=document.getElementById("id13").value;
+        document.getElementById("hide14").innerHTML = document.getElementById("id14").value;
+        document.getElementById("hide15").innerHTML = document.getElementById("id15").value;
+        document.getElementById("hide16").innerHTML = document.getElementById("id16").value;
+    
+       var doc = new jsPDF();
+       doc.fromHTML(document.getElementById('customers'), 16, 16, {
+        'width': 170
+      });
+      doc.save('weekday-file.pdf');
+      document.getElementById("hide1").innerHTML="";
+        document.getElementById("hide2").innerHTML = "";
+        document.getElementById("hide3").innerHTML="";
+        document.getElementById("hide4").innerHTML = "";
+        document.getElementById("hide5").innerHTML="";
+        document.getElementById("hide6").innerHTML = "";
+        document.getElementById("hide7").innerHTML="";
+        document.getElementById("hide8").innerHTML = "";
+        document.getElementById("hide9").innerHTML="";
+        document.getElementById("hide10").innerHTML = "";
+        document.getElementById("hide11").innerHTML="";
+        document.getElementById("hide12").innerHTML = "";
+        document.getElementById("hide13").innerHTML="";
+        document.getElementById("hide14").innerHTML = "";
+        document.getElementById("hide15").innerHTML ="";
+        document.getElementById("hide16").innerHTML = "";
+    }
+</script>
+@*<script>
+    function demoFromHTML2() {
+        document.getElementById("hide17").innerHTML=document.getElementById("id17").value;
+        document.getElementById("hide18").innerHTML = document.getElementById("id18").value;
+        document.getElementById("hide19").innerHTML=document.getElementById("id19").value;
+        document.getElementById("hide20").innerHTML = document.getElementById("id20").value;
+        document.getElementById("hide21").innerHTML = document.getElementById("id21").value;
+        document.getElementById("hide22").innerHTML = document.getElementById("id22").value;
+        document.getElementById("hide23").innerHTML = document.getElementById("id23").value;
+        document.getElementById("hide24").innerHTML = document.getElementById("id24").value;
+        document.getElementById("hide25").innerHTML = document.getElementById("id25").value;
+        document.getElementById("hide26").innerHTML = document.getElementById("id26").value;
+        document.getElementById("hide27").innerHTML = document.getElementById("id27").value;
+        document.getElementById("hide28").innerHTML = document.getElementById("id28").value;
+        document.getElementById("hide29").innerHTML = document.getElementById("id29").value;
+        document.getElementById("hide30").innerHTML = document.getElementById("id30").value;
+        document.getElementById("hide31").innerHTML = document.getElementById("id31").value; 
+        document.getElementById("hide32").innerHTML=document.getElementById("id32").value; 
+       var doc1 = new jsPDF();
+       doc1.fromHTML(document.getElementById('weekend'), 16, 16, {
+        'width': 270
+      });
+       doc1.save('weekend-file.pdf');
+      
+        document.getElementById("hide17").innerHTML="";
+        document.getElementById("hide18").innerHTML = "";
+        document.getElementById("hide19").innerHTML="";
+        document.getElementById("hide20").innerHTML = "";
+        document.getElementById("hide21").innerHTML = "";
+        document.getElementById("hide22").innerHTML = "";
+        document.getElementById("hide23").innerHTML ="";
+        document.getElementById("hide24").innerHTML = "";
+        document.getElementById("hide25").innerHTML = "";
+        document.getElementById("hide26").innerHTML = "";
+        document.getElementById("hide27").innerHTML = "";
+        document.getElementById("hide28").innerHTML = "";
+        document.getElementById("hide29").innerHTML = "";
+        document.getElementById("hide30").innerHTML ="";
+        document.getElementById("hide31").innerHTML = "";
+        document.getElementById("hide32").innerHTML="";
+
+    }
+</script>*@

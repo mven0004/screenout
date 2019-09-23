@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "stepsOfSolve";
+}
+
+<style>
+    .aboutimg {
+        height: 60vh;
+        min-height: 500px;
+        background-image: url('../../img/stpeschild.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .overlay-div {
+        height: 60vh;
+        min-height: 500px;
+        width: 100%;
+        position: absolute;
+        background-color: #000;
+        opacity: .7;
+    }
+
+    .setsizeimg {
+        max-height: 100px;
+        max-width: 100px;
+    }
+</style>
+<div class="aboutimg">
+    <div class="overlay-div"></div> <!-- the new div -->
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <p class="lead text-white">Our Amazing Team</p>
+                <h1 class="font-weight-light text-white ">We Always Foucs On You</h1>
+            </div>
+        </div>
+    </div>
+</div>
