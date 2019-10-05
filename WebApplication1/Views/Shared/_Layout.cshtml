@@ -11,17 +11,21 @@
 <body style="padding-bottom:0px">
     <nav class="navbar navbar-dark navbar-expand-md fixed-top py-3 bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="https://screenout.team"><img src="../../img/screenout-logo.png" width="50" height="30" class="d-inline-block align-top" alt="">@Html.ActionLink("ScreenOut", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="../../img/screenout-logo.png" width="50" height="30" class="d-inline-block align-top" alt="">
+                ScreenOut
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon "></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link active" })
+                    <li class="@(ViewBag.CurrentPage == "Home" ? "nav-item active" : "nav-item")">
+                        @Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class="nav-link" })
                     </li>
+
                     <!-- Dropdown -->
-                    <li class="nav-item dropdown">
+                    <li class="@(ViewBag.CurrentPage == "Research" ? "nav-item dropdown active" : "nav-item dropdown")">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Research
                         </a>
@@ -30,22 +34,21 @@
                             @Html.ActionLink("Video game usage", "GameTime", "Home", null, new { @class = "dropdown-item" })
                         </div>
                     </li>
-                    <li class="nav-item">
+
+                    <li class="@(ViewBag.CurrentPage == "Education" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("Educate yourself", "Education", "Home", null, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item">
+                    <li class="@(ViewBag.CurrentPage == "MediaPlan" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("Media-plan", "MediaPlan", "Home", null, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item">
+                    <li class="@(ViewBag.CurrentPage == "About" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("About us", "About", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
-                
             </div>
         </div>
     </nav>
-
 
     <div class="container-fluid" style="padding-right: 0px; padding-left: 0px;">
         @RenderBody()
@@ -70,23 +73,6 @@
             -o-transition: padding 0.2s ease;
             transition: padding 0.2s ease;
         }
-
-        .nav-link {
-            color: white !important;
-        }
-
-        .navbar-brand {
-            color: white !important;
-        }
-
-        .navbar-toggler-icon {
-            color: white !important;
-        }
-
-        .navbar-toggler {
-            color: white !important;
-        }
-
         .affix {
             padding-top: 0.2em !important;
             padding-bottom: 0.2em !important;

@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "mediaplan";
+    ViewBag.CurrentPage = "MediaPlan";
 }
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <style>
@@ -61,9 +62,10 @@
         -o-transition: all 0.3s ease 0s;
         transition: all 0.3s ease 0s;
     }
+
     .bgc {
-    background-image: linear-gradient(to bottom,#f9fbfd 0,#fff 100%);
-}
+        background-image: linear-gradient(to bottom,#f9fbfd 0,#fff 100%);
+    }
 </style>
 
 <!-- first part of the page- the background div -->
@@ -76,15 +78,18 @@
                 <h1>
                     CHANGING BEHAVIOURS
                 </h1>
-                <h4>Make a family media plan today. Set guidelines for you and your kids to follow at home. Take control of developing good habits for a better and brighter future. </h4>
-                <a href="#one" class="primary-btn">
+                <h4>
+                    Make a family media plan today. Set guidelines for you and your kids to follow at home.
+                    Take control of developing good habits for a better and brighter future.
+                </h4>
+                <a href="#one" class="btn btn-primary">
                     Create Plan
-                    <i class="ti-angle-right ml-1"></i>
                 </a>
             </div>
         </div>
     </div>
 </div><!--./ the background div -->
+
 <span id="one"></span>
 <section class="bgc" style="padding-top:100px; padding-bottom:100px">
     <div class="container">
@@ -106,7 +111,6 @@
                                     <div class="form-label-group pt-3">
                                         <label for="parentName">Enter your name:*</label>
                                         <input type="text" class="form-control form-control-flush col-12" id="parentName" placeholder="" required>
-
                                     </div>
                                     <div class="form-label-group pt-3">
                                         <label for="kidsNameFirs">
@@ -122,20 +126,7 @@
                                         <input type="text" class="form-control form-control-flush col-12" id="kidsAgeFirst" placeholder="" required>
 
                                     </div>
-                                    @*<div class="form-label-group pt-3">
-                                        <label for="kidsNameSecond">
-                                            Enter second kid's name:
-                                        </label>
-                                        <input type="text" class="form-control form-control-flush col-12" id="kidsNameSecond" placeholder="">
 
-                                    </div>
-                                    <div class="form-label-group pt-3">
-                                        <label for="kidAgeSecond">
-                                            Enter age for second kid:
-                                        </label>
-                                        <input type="text" class="form-control form-control-flush col-12" id="kidAgeSecond" placeholder="">
-
-                                    </div>*@
                                     <div class="pt-3">
                                         <button class="btn btn-block btn-success lift" type="button" onclick="validation()">
                                             Create Your Plan
@@ -147,78 +138,8 @@
 
                         </div>
                     </div>
+                </div>
             </div>
-</div>
-
         </div>
     </div>
 </section>
-<script>
-    $('a[href*="#"]')
-        // Remove links that don't actually link to anything
-        .not('[href="#"]')
-        .not('[href="#0"]')
-        .click(function (event) {
-            // On-page links
-            if (
-                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                &&
-                location.hostname == this.hostname
-            ) {
-                // Figure out element to scroll to
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                // Does a scroll target exist?
-                if (target.length) {
-                    // Only prevent default if animation is actually gonna happen
-                    event.preventDefault();
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000, function () {
-                        // Callback after animation
-                        // Must change focus!
-                        var $target = $(target);
-                        $target.focus();
-                        if ($target.is(":focus")) { // Checking if the target was focused
-                            return false;
-                        } else {
-                            $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                            $target.focus(); // Set focus again
-                        };
-                    });
-                }
-            }
-        });
-</script>
-
-<script>
-    function validation() {
-        var age = +document.getElementById('kidsAgeFirst').value;
-
-        //var age2 = +document.getElementById('kidAgeSecond').value;
-
-        var name = document.getElementById('parentName').value
-
-        var childFname = document.getElementById('kidsNameFirst').value
-
-
-        if (!(age > 1 && age < 100)) {
-
-            alert("The age must be a number between 1 and 100");
-            return false;
-        }
-
-        //if (age2 != "") {
-        //    if (!(age2 > 1 && age2 < 100)) {
-
-        //        alert("The age must be a number between 1 and 100");
-        //        return false;
-        //    }
-        //}
-    localStorage.setItem('parentname', name);
-    localStorage.setItem('childfname', childFname);
-     window.location.href = "plan";
-    }
-
-
-</script>

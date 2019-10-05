@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Game Time - Interaction Graph";
+    ViewBag.CurrentPage = "Research";
 }
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -159,10 +160,18 @@
                 <h3>Bullying Prevalence in Australia</h3>
                 <p class="lead mb-0">
                     The <strong>highest instances of online-game bullying</strong> happened to gamers aged between
-                    <strong>11 and 12 years old</strong> accounting for <strong>22%</strong> in 12 months to June 2017. In addition,
+                    <strong>11 and 12 years old</strong> accounting for <strong>22%</strong>* in 12 months to June 2017. In addition,
                     we saw <strong>positive correlation between bullying and gamer age</strong> represented by the
                     <strong>red line</strong> on the chart.
                 </p>
+
+                <div class="float-right mt-5">
+                    <em>
+                        <a href="https://esafety.gov.au/-/media/cesc/documents/corporate-office/youth_kids_and_digital.docx" target="_blank">
+                            * eSafety Australia: State of play – youth, kids and digital dangers
+                        </a>
+                    </em>
+                </div>
             </div>
         </div>
 
@@ -272,6 +281,20 @@
                 <div class="row mb-3">
                     <div id="FemaleGameTimeChart" class="chart"></div>
                 </div>
+
+                <div class="mt-3">
+                    <em>* Sources:</em><br />
+                    <em>
+                        <a href="https://igea.net/2019/07/research-reveals-the-power-of-games-in-australia/" target="_blank">
+                            The Interactive Games & Entertainment Association-Digital Australia 2020
+                        </a>
+                    </em> <br />
+                    <em>
+                        <a href="https://pediatrics.aappublications.org/content/pediatrics/early/2014/07/29/peds.2013-4021.full.pdf" target="_blank">
+                            Electronic Gaming and Psychosocial Adjustment
+                        </a>
+                    </em>
+                </div>
             </div>
         </div>
     </div>
@@ -311,8 +334,8 @@
             titleTextStyle: { bold: false, fontSize: 18 },
             colors: ["#e1e7e7", "#ef5255"],
             fontName: 'Verdana',
-            chartArea: { left: 60, top: 50, width: '90%', height: '73%' },
-            //lengend: { position: 'in', alignment: 'end' },
+            chartArea: { left: 50, top: 25, width: '90%', height: '75%' },
+            lengend: { position: 'none' },
             hAxis: { title: 'Age', gridlines: { color: 'white' }, ticks: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
             vAxis: { format: 'percent', gridlines: { color: 'white' }, minValue: 0 },
             trendlines: {

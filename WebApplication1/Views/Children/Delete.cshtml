@@ -1,0 +1,65 @@
+﻿@model WebApplication1.Models.Child
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-primary">Remove Child</h3>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger">
+            <h4>Warning:</h4>
+            <p>
+                <strong>Are you sure you want to remove this child?</strong> The tracked times associated with
+                this child will be deleted and cannot be recovered. <br />
+                Once you click on <strong class="text-danger">Delete</strong> button, all relevant data will
+                be deleted immediately and you will be redirected to Children List.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-light">
+                <h4>Child Information</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ScreenTimeGoal)
+                    </dt>
+
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ScreenTimeGoal)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        @Html.ActionLink("Cancel", "Index", null, htmlAttributes: new { @class = "btn btn-outline-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

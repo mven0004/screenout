@@ -48,10 +48,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HttpAuthModule, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HttpAuthModule.2.2.2.0\lib\net45\HttpAuthModule.dll</HintPath>
@@ -86,6 +86,12 @@
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="SendGrid, Version=9.12.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.12.0\lib\net452\SendGrid.dll</HintPath>
@@ -180,8 +186,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChildrenController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TrackedTimesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,13 +198,35 @@
     <Compile Include="Migrations\201909251416533_InitialCreate.Designer.cs">
       <DependentUpon>201909251416533_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909270728308_AddChildrenTable.cs" />
+    <Compile Include="Migrations\201909270728308_AddChildrenTable.Designer.cs">
+      <DependentUpon>201909270728308_AddChildrenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909280513097_AddScreenTimeGoalFild.cs" />
+    <Compile Include="Migrations\201909280513097_AddScreenTimeGoalFild.Designer.cs">
+      <DependentUpon>201909280513097_AddScreenTimeGoalFild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909280616015_AddTrackedTimeTable.cs" />
+    <Compile Include="Migrations\201909280616015_AddTrackedTimeTable.Designer.cs">
+      <DependentUpon>201909280616015_AddTrackedTimeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909281102257_AmendSpellingOnField.cs" />
+    <Compile Include="Migrations\201909281102257_AmendSpellingOnField.Designer.cs">
+      <DependentUpon>201909281102257_AmendSpellingOnField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Child.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TrackedTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ChildOverviewViewModel.cs" />
+    <Compile Include="ViewModels\OverviewViewModel.cs" />
+    <Compile Include="ViewModels\TrackedTimeChildViewModel.cs" />
+    <Compile Include="ViewModels\TrackedTimeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -204,6 +235,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -219,7 +251,7 @@
     <Content Include="img\homepagetodo.jpg" />
     <Content Include="img\information-icon-16x16.png" />
     <Content Include="img\learn.png" />
-    <Content Include="img\media1.jpg" />
+    <Content Include="img\media-plan-banner.jpg" />
     <Content Include="img\plan1.jpg" />
     <Content Include="img\s1.jpg" />
     <Content Include="img\s2.jpg" />
@@ -321,7 +353,7 @@
     <Content Include="Views\Home\education.cshtml" />
     <Content Include="Views\Home\ScreenTime.cshtml" />
     <Content Include="Views\Home\GameTime.cshtml" />
-    <Content Include="Views\Home\mediaplan.cshtml" />
+    <Content Include="Views\Home\MediaPlan.cshtml" />
     <Content Include="Views\Home\plan.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -343,6 +375,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Children\Index.cshtml" />
+    <Content Include="Views\TrackedTimes\Create.cshtml" />
+    <Content Include="Views\TrackedTimes\Delete.cshtml" />
+    <Content Include="Views\TrackedTimes\Details.cshtml" />
+    <Content Include="Views\TrackedTimes\Edit.cshtml" />
+    <Content Include="Views\TrackedTimes\Index.cshtml" />
+    <Content Include="Views\Children\Create.cshtml" />
+    <Content Include="Views\Children\Edit.cshtml" />
+    <Content Include="Views\Children\Delete.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Children\Progress.cshtml" />
+    <Content Include="Views\Manage\DeleteUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -359,6 +404,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909251416533_InitialCreate.resx">
       <DependentUpon>201909251416533_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270728308_AddChildrenTable.resx">
+      <DependentUpon>201909270728308_AddChildrenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909280513097_AddScreenTimeGoalFild.resx">
+      <DependentUpon>201909280513097_AddScreenTimeGoalFild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909280616015_AddTrackedTimeTable.resx">
+      <DependentUpon>201909280616015_AddTrackedTimeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281102257_AmendSpellingOnField.resx">
+      <DependentUpon>201909281102257_AmendSpellingOnField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

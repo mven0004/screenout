@@ -15,15 +15,17 @@ namespace WebApplication1.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _db;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationDbContext db)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _db = db;
         }
 
         public ApplicationSignInManager SignInManager
@@ -49,6 +51,8 @@ namespace WebApplication1.Controllers
                 _userManager = value;
             }
         }
+
+        public ApplicationDbContext db { get; private set; }
 
         //
         // GET: /Manage/Index
@@ -333,7 +337,28 @@ namespace WebApplication1.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ActionResult DeleteUser()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteUser")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteUserConfirmed()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId()); //use async find
+            var result = await UserManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.ErrorMessage = "Opp...! There are problems with our server at the moment. Please perform the operation later.";
+            return View();
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Excessive Screen Time";
+    ViewBag.CurrentPage = "Research";
 }
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -60,8 +61,8 @@
                 <p class="describ text-white text-center">Is your child following the recommended daily screen time by AIHW?</p>
                 <p class="describ text-white text-center">Does your child use electronic devices while sleeping?</p>
                 @*<a class="btn btn-outline-primary call-action" href="#GamerPercentageChart" onclick="SmoothScrollTo(event)">Gamer Percentage</a>
-        <a class="btn btn-outline-primary call-action" href="#AvgGameTimeChart" onclick="SmoothScrollTo(event)">Game Time</a>
-        <a class="btn btn-outline-primary call-action" href="#GuidelineChart" onclick="SmoothScrollTo(event)">Guideline</a>*@
+                    <a class="btn btn-outline-primary call-action" href="#AvgGameTimeChart" onclick="SmoothScrollTo(event)">Game Time</a>
+                    <a class="btn btn-outline-primary call-action" href="#GuidelineChart" onclick="SmoothScrollTo(event)">Guideline</a>*@
             </div>
         </div>
     </div>
@@ -69,20 +70,14 @@
 
 <section class="page-section" id="services" style="background-color:#f8f9fa">
     <div class="container">
-        @*<div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Children and Game</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>*@
         <div class="row text-center pt-4 pb-4">
             <div class="col-md-4">
                 <div class="card shadow p-3 bg-white rounded h-100">
                     <div class="card-body">
-                        <h4 class="service-heading">Screen Time vs Sleep Time</h4>
+                        <h4 class="service-heading">How is screen time harming sleep?</h4>
                         <p class="text-muted">
-                            With an <b>increase</b> in <b>screen time</b> for different activities,
-                            the <b>sleep time decreases</b> for kids suggesting a strong <b>correlation</b>.
+                            More screen time results in <b>sleep deprivation</b>. 
+                            One hour increase in screen time reduces the sleep time by <b>20%</b>.
                         </p>
                     </div>
                 </div>
@@ -117,7 +112,7 @@
         <div class="row mb-3 mt-3 pb-3" style="border-bottom: 1px solid #cfcfcf">
             <div id="chart_screentime_sleeptime" class="chart col-lg-6 order-lg-2"></div>
             <div class="col-lg-6 order-lg-1 pt-3">
-                <h3>Screen Time vs Sleep Time</h3>
+                <h3>Screen Time and Sleep Time Negative Correlation</h3>
                 <p class="lead mb-0">
                     Screen time and sleep duration have been shown to have to negative correlation as seen in the chart.
                     Even though different screen time activities have varying effects on sleep duration, it is recommended that
@@ -132,8 +127,14 @@
                 <h3>Screen Time Usage</h3>
                 <p class="lead mb-0">
                     The chart shows time spent by male and female kids on different activities like games, chatting and other usage.
-                    The total <b>daily average screen time</b> is around <b>7 hours</b> which is <b>5 hours</b> more than <b>recommended 2 hours</b>.
+                    The total <b>daily average screen time</b> is around <b>7 hours</b> which is <b>5 hours</b> more than 
+                    <b>recommended 2 hours*</b> by the Department of Health in Australia.
                 </p>
+                <div class="float-right mt-5">
+                    <em><a href="https://www1.health.gov.au/internet/main/publishing.nsf/content/health-pubhlth-strateg-phys-act-guidelines" target="_blank">
+                        * Australia's Physical Activity and Sedentary Behaviour Guidelines
+                    </a></em>
+                </div>
             </div>
         </div>
 
@@ -143,8 +144,15 @@
                 <h3>Physical Activity and Screen Time Guideline</h3>
                 <p class="lead mb-0">
                     <b>Only 30% </b>of children in <b>age group 9-12 years</b> meet recommended daily screen time,
-                    <b>less than 20%</b> meet the recommended <b>physical activity*</b> and only around <b>6% met both criteria</b> as defined by AIHW.
+                    <b>less than 20%</b> meet the recommended <b>physical activity*</b> and only around <b>6% met both criteria</b> 
+                    as defined by Australian Institute of Health and Welfare (AIHW).
                 </p>
+
+                <div class="float-right mt-5">
+                    <em><a href="https://www.aihw.gov.au/reports-data/behaviours-risk-factors/physical-activity/overview" target="_blank">
+                        * Physical Activity Report by Australian Institute of Health Welfare
+                    </a></em>
+                </div>
             </div>
         </div>
     </div>
@@ -158,9 +166,9 @@
     google.charts.setOnLoadCallback(drawScreenTimeChart);
     google.charts.setOnLoadCallback(drawRecommendActivityChart);
     window.onresize = function () {
-      drawRecommendActivityChart();
-      drawScreenTimeChart();
-      drawScreenTimeSleepTimeChart();
+        drawRecommendActivityChart();
+        drawScreenTimeChart();
+        drawScreenTimeSleepTimeChart();
     }
     function drawScreenTimeSleepTimeChart() {
         var data = new google.visualization.DataTable();
@@ -187,6 +195,7 @@
             chartArea: { left: 70, top: 50, width: '60%', height: '70%' },
             vAxis: {
                 title: "Sleep Duration",
+                titleTextStyle: {italic: false},
                 minValue: [5, 0, 0],
                 gridlines: { color: 'f6f6f6', units: { hours: { format: ['h:mm', 'ha'] } } },
                 minorGridlines: { units: { minutes: { format: ['h:mm', 'ha'] } } }
@@ -205,7 +214,7 @@
         data.addColumn({ type: 'string', role: 'annotation' });
         data.addRows([
             ['Console games', 0.1, 0.9, 2, null],
-            ['PC games', 0.3, 1.2, 2, '2h AIHW Recommendation Screen Time'],
+            ['PC games', 0.3, 1.2, 2, '2h Recommended Screen Time'],
             ['Online chat', 2.1, 1.9, 2, null],
             ['Other PC use', 2.6, 2.1, 2, null],
             ['Total use', 5.6, 6.6, 2, null]
@@ -218,7 +227,7 @@
             chartArea: { left: 60, top: 50, width: '90%', height: '73%' },
             legend: { position: 'in', alignment: 'start' },
             animation: { startup: true, duration: 2000, easing: 'linear' },
-            vAxis: { title: 'Hours', gridlines: { color: 'white' } },
+            vAxis: { title: 'Hours', titleTextStyle: {italic: false}, gridlines: { color: 'white' } },
             hAxis: { title: '' },
             seriesType: 'bars',
             series: { 2: { type: 'line' } }
@@ -230,7 +239,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', "Recommendation");
         data.addColumn('number', "9-12");
-        data.addColumn({type: 'string', role: 'tooltip'});
+        data.addColumn({ type: 'string', role: 'tooltip' });
 
         data.addRows([
             ["Physical activity", 0.18, "Recommendaton for physical activity is at least one hour per day. Only 18% of children aged 9-12 met such guideline."],

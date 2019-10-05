@@ -1,0 +1,107 @@
+﻿@model PagedList.IPagedList<WebApplication1.Models.TrackedTime>
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-primary">Family Time and Screen Time Tracking</h3>
+        <hr />
+    </div>
+</div>
+
+@if (ViewBag.NoChild)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h3>Notice:</h3>
+                <p>
+                    It appears that you do not have any child under your profile yet. You need to have a child to track
+                    screen time and family time.
+                </p>
+                @Html.ActionLink("Add Child", "Create", "Children", null, htmlAttributes: new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    if (Model.Count == 0)
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <h3>Notice:</h3>
+                    It appears that there is no tracking record under your child profile yet. Click on
+                    <strong class="text-success">Add Tracking</strong> button to start tracking your child's screen time and
+                    family time.
+                </div>
+            </div>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Add Tracking", "Create", null, htmlAttributes: new { @class = "btn btn-success" })
+    </p>
+    <table class="table table-hover bg-white">
+        <thead class="table-light">
+            <tr>
+                <th>
+                    Child Name
+                </th>
+                <th>
+                    Tracked Date
+                </th>
+                <th>
+                    Family Time
+                </th>
+                <th>
+                    Screen Time
+                </th>
+                <th>
+                    Screen Time Goal
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Child.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrackedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FamilyTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScreenTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScreenTimeGoal)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+}
+

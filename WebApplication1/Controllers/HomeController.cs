@@ -64,23 +64,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult education()
+        public ActionResult Education()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
-        public ActionResult mediaplan()
+        public ActionResult MediaPlan()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
-        public ActionResult plan()
+        public ActionResult Plan()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
