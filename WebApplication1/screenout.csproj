@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\ChildrenController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -195,33 +196,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909251416533_InitialCreate.cs" />
-    <Compile Include="Migrations\201909251416533_InitialCreate.Designer.cs">
-      <DependentUpon>201909251416533_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909270728308_AddChildrenTable.cs" />
-    <Compile Include="Migrations\201909270728308_AddChildrenTable.Designer.cs">
-      <DependentUpon>201909270728308_AddChildrenTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909280513097_AddScreenTimeGoalFild.cs" />
-    <Compile Include="Migrations\201909280513097_AddScreenTimeGoalFild.Designer.cs">
-      <DependentUpon>201909280513097_AddScreenTimeGoalFild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909280616015_AddTrackedTimeTable.cs" />
-    <Compile Include="Migrations\201909280616015_AddTrackedTimeTable.Designer.cs">
-      <DependentUpon>201909280616015_AddTrackedTimeTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909281102257_AmendSpellingOnField.cs" />
-    <Compile Include="Migrations\201909281102257_AmendSpellingOnField.Designer.cs">
-      <DependentUpon>201909281102257_AmendSpellingOnField.cs</DependentUpon>
+    <Compile Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.cs" />
+    <Compile Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.Designer.cs">
+      <DependentUpon>201910060908384_CreateActivitiesAndUserActivitiesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Child.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TrackedTime.cs" />
+    <Compile Include="Models\UserActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ChildOverviewViewModel.cs" />
@@ -238,6 +225,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\9.png" />
@@ -301,6 +289,10 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Content\timeline.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\gameaway20190825070851 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\inforScript.js" />
@@ -390,10 +382,10 @@
     <Content Include="Views\Children\Progress.cshtml" />
     <Content Include="Views\Manage\DeleteUser.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Activities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -405,20 +397,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909251416533_InitialCreate.resx">
-      <DependentUpon>201909251416533_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909270728308_AddChildrenTable.resx">
-      <DependentUpon>201909270728308_AddChildrenTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909280513097_AddScreenTimeGoalFild.resx">
-      <DependentUpon>201909280513097_AddScreenTimeGoalFild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909280616015_AddTrackedTimeTable.resx">
-      <DependentUpon>201909280616015_AddTrackedTimeTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909281102257_AmendSpellingOnField.resx">
-      <DependentUpon>201909281102257_AmendSpellingOnField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.resx">
+      <DependentUpon>201910060908384_CreateActivitiesAndUserActivitiesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

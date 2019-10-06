@@ -21,8 +21,9 @@ namespace WebApplication1.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Child> Children { get; set; }
-
         public DbSet<TrackedTime> TrackedTimes { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<UserActivity> UserActivities { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
