@@ -255,7 +255,7 @@
             chartArea: { left: 60, top: 50, width: '90%', height: '75%' },
             animation: { startup: true, duration: 2000, easing: 'linear' },
             hAxis: { title: 'Met Recommendation Guideline' },
-            vAxis: { format: 'percent', gridlines: { color: 'white' }, maxValue: 0.5 }
+            vAxis: { format: 'percent', gridlines: { color: 'white' }, maxValue: 0.4 }
         };
         var chart = new google.visualization.ColumnChart(document.getElementById('GuidelineChart'));
         chart.draw(data, options);

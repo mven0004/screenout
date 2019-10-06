@@ -129,16 +129,55 @@
                 <div class="container-fluid pt-3">
                     @RenderBody()
 
-                    <div class="row pb-3">                   </div>
+                    <div class="row pb-3"></div>
                 </div>
             </main>
         </div>
-        
-        <footer class="border-top">
-            <p>&copy; @DateTime.Now.Year Screen Out | All Rights Reserved</p>
-        </footer>
     </div>
 
+    <div class="container-fluid p-0">
+        <div class="bg-dark pt-5 pb-3 text-white">
+            <div class="container">
+                <footer>
+                    <div class="row justify-content-sm-between">
+                        <div class="col-4 col-md-2 mb-4">
+                            <h6 class="">Navigation</h6>
+                            <ul class="nav flex-column">
+                                <li class="mb-1"><a href="@Url.Action("Index", "Home")" class="text-muted">Home</a></li>
+                                <li class="mb-1"><a href="@Url.Action("About", "Home")" class="text-muted">About</a></li>
+                                <li class="mb-1"><a href="@Url.Action("Education", "Home")" class="text-muted">Education</a></li>
+                                <li class="mb-1"><a href="@Url.Action("MediaPlan", "Home")" class="text-muted">Media PLan</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 col-md-2 mb-4">
+                            <h6 class="mb-3">Visualisation</h6>
+                            <ul class="nav flex-column">
+                                <li class="mb-1"><a href="@Url.Action("ScreenTime", "Home")" class="text-muted">Screen Time</a></li>
+                                <li class="mb-1"><a href="@Url.Action("GameTime", "Home")" class="text-muted">Game Time</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 col-md-2 mb-4">
+                            <h6 class="mb-3">Acknowledgement</h6>
+                            <ul class="nav flex-column">
+                                <li class="mb-1"><a href="#" class="text-muted">Credits</a></li>
+                                <li class="mb-1"><a href="#" class="text-muted">Resources</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mb-4">
+                            <h6 class="mb-3">ScreenOut</h6>
+                            <p class="text-muted">ScreenOut is a web platform designed for parents to know more about issues related to screen time, which have potential influence over a child's whole life.</p>
+                        </div>
+                    </div>
+
+                    <div class="row border-top border-white pt-3">
+                        <div class="col">
+                            &copy; @DateTime.Now.Year ScreenOut | All Rights Reserved
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
     @* Scroll to top button *@
     <a onclick="scrollToTop()" id="scroll-top"><img src="~/img/arrow-up.png" title="Go Top" /></a>
 
