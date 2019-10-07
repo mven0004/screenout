@@ -73,73 +73,26 @@
     <div class="overlay-div"></div>
     <div class="container h-100">
         <!-- the inside text container div -->
-        <div class="row fullscreen" style="padding-top:25%">
+        <div class="row fullscreen" style="padding-top:20%">
             <div class="banner-content col-lg-7">
                 <h1>
                     CHANGING BEHAVIOURS
                 </h1>
-                <h4>
-                    Make a family media plan today. Set guidelines for you and your kids to follow at home.
+                <h5>
+                    Make a family media plan today. Set screen time your kids to follow at home and track their progress with us.
                     Take control of developing good habits for a better and brighter future.
-                </h4>
-                <a href="#one" class="btn btn-primary">
-                    Create Plan
-                </a>
+                </h5>
+                <a href="@Url.Action("Login", "Account")" class="btn btn-primary mt-3 mb-3">                    Set Plan Now                </a>
             </div>
         </div>
     </div>
 </div><!--./ the background div -->
 
 <span id="one"></span>
-<section class="bgc" style="padding-top:100px; padding-bottom:100px">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <a>
-                    <img src="../../img/form.jpg" alt="Coworking" class="solution" style="max-width:100%">
-                </a>
-            </div>
-            <div class="col">
-                <div class="row justify-content-center">
-                    <div class="col-xl-9 col-lg-10">
-                        <div class="card">
-                            <!-- Body -->
-                            <div class="card-body">
-
-                                <!-- Form -->
-                                <form>
-                                    <div class="form-label-group pt-3">
-                                        <label for="parentName">Enter your name:*</label>
-                                        <input type="text" class="form-control form-control-flush col-12" id="parentName" placeholder="" required>
-                                    </div>
-                                    <div class="form-label-group pt-3">
-                                        <label for="kidsNameFirs">
-                                            Enter first kid's name:*
-                                        </label>
-                                        <input type="text" class="form-control form-control-flush col-12" id="kidsNameFirst" placeholder="" required>
-
-                                    </div>
-                                    <div class="form-label-group pt-3">
-                                        <label for="kidsAgeFirst">
-                                            Enter age for first kid:*
-                                        </label>
-                                        <input type="text" class="form-control form-control-flush col-12" id="kidsAgeFirst" placeholder="" required>
-
-                                    </div>
-
-                                    <div class="pt-3">
-                                        <button class="btn btn-block btn-success lift" type="button" onclick="validation()">
-                                            Create Your Plan
-                                        </button>
-                                    </div>
-                                </form>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="~/img/overview-screenshot.PNG" class="img-fluid" />
         </div>
     </div>
-</section>
+</div>

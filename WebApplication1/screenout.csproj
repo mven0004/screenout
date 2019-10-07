@@ -196,9 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.cs" />
-    <Compile Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.Designer.cs">
-      <DependentUpon>201910060908384_CreateActivitiesAndUserActivitiesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.cs" />
+    <Compile Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.Designer.cs">
+      <DependentUpon>201910062245440_AddActivitiesAndUserActivitiesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +232,7 @@
     <Content Include="img\arrow-up.png" />
     <Content Include="img\beverage.jpg" />
     <Content Include="img\bg_homepage.jpg" />
+    <Content Include="img\child-progress-screenshot.PNG" />
     <Content Include="img\educate-yourself-banner.jpg" />
     <Content Include="img\form.jpg" />
     <Content Include="img\game-time-banner.jpg" />
@@ -397,8 +398,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910060908384_CreateActivitiesAndUserActivitiesTable.resx">
-      <DependentUpon>201910060908384_CreateActivitiesAndUserActivitiesTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.resx">
+      <DependentUpon>201910062245440_AddActivitiesAndUserActivitiesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
