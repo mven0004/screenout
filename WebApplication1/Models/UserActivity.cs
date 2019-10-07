@@ -11,7 +11,7 @@ namespace WebApplication1.Models
         public string UserId { get; set; }
         public int ActivityId { get; set; }
         public DateTime CreatedDate { get; set; }
-        public virtual ApplicationUser Users { get; set; }
-        public virtual Activity Activities { get; set; }
+        public virtual IEnumerable<ApplicationUser> Users { get; set; }
+        public virtual IEnumerable<Activity> Activities { get; set; }
     }
 }

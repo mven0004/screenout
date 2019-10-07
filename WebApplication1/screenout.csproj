@@ -196,9 +196,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.cs" />
-    <Compile Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.Designer.cs">
-      <DependentUpon>201910062245440_AddActivitiesAndUserActivitiesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201910070612144_AddActivitiesAndUserActivities.cs" />
+    <Compile Include="Migrations\201910070612144_AddActivitiesAndUserActivities.Designer.cs">
+      <DependentUpon>201910070612144_AddActivitiesAndUserActivities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,6 +242,7 @@
     <Content Include="img\information-icon-16x16.png" />
     <Content Include="img\learn.png" />
     <Content Include="img\media-plan-banner.jpg" />
+    <Content Include="img\overview-screenshot.PNG" />
     <Content Include="img\plan1.jpg" />
     <Content Include="img\s1.jpg" />
     <Content Include="img\s2.jpg" />
@@ -398,8 +399,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910062245440_AddActivitiesAndUserActivitiesTable.resx">
-      <DependentUpon>201910062245440_AddActivitiesAndUserActivitiesTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910070612144_AddActivitiesAndUserActivities.resx">
+      <DependentUpon>201910070612144_AddActivitiesAndUserActivities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

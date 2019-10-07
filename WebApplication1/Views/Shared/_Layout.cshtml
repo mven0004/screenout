@@ -41,9 +41,9 @@
                     <li class="@(ViewBag.CurrentPage == "MediaPlan" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("Media-plan", "MediaPlan", "Home", null, new { @class = "nav-link" })
                     </li>
-                    <li class="@(ViewBag.CurrentPage == "About" ? "nav-item active" : "nav-item")">
+                    @*<li class="@(ViewBag.CurrentPage == "About" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("About us", "About", "Home", null, new { @class = "nav-link" })
-                    </li>
+                    </li>*@
                     @Html.Partial("_LoginPartial")
                 </ul>
             </div>

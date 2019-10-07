@@ -7,13 +7,13 @@ namespace WebApplication1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddActivitiesAndUserActivitiesTable : IMigrationMetadata
+    public sealed partial class AddActivitiesAndUserActivities : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddActivitiesAndUserActivitiesTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddActivitiesAndUserActivities));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910062245440_AddActivitiesAndUserActivitiesTable"; }
+            get { return "201910070612144_AddActivitiesAndUserActivities"; }
         }
         
         string IMigrationMetadata.Source
