@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="@(ViewBag.CurrentPage == "Home" ? "nav-item active" : "nav-item")">
-                        @Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class="nav-link" })
+                        @Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class = "nav-link" })
                     </li>
 
                     <!-- Dropdown -->
@@ -30,8 +30,8 @@
                             Research
                         </a>
                         <div class="dropdown-menu">
-                            @Html.ActionLink("Issue and usage of screens", "ScreenTime", "Home", null, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Video game usage", "GameTime", "Home", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Screen usage and issues", "ScreenTime", "Home", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Game usage and bullying", "GameTime", "Home", null, new { @class = "dropdown-item" })
                         </div>
                     </li>
 
@@ -39,11 +39,9 @@
                         @Html.ActionLink("Educate yourself", "Education", "Home", null, new { @class = "nav-link" })
                     </li>
                     <li class="@(ViewBag.CurrentPage == "MediaPlan" ? "nav-item active" : "nav-item")">
-                        @Html.ActionLink("Media-plan", "MediaPlan", "Home", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Screen time plan", "MediaPlan", "Home", null, new { @class = "nav-link" })
                     </li>
-                    @*<li class="@(ViewBag.CurrentPage == "About" ? "nav-item active" : "nav-item")">
-                        @Html.ActionLink("About us", "About", "Home", null, new { @class = "nav-link" })
-                    </li>*@
+
                     @Html.Partial("_LoginPartial")
                 </ul>
             </div>
@@ -54,47 +52,7 @@
         @RenderBody()
 
 
-        <div class="bg-dark pt-5 pb-3 text-white">
-            <div class="container">
-                <footer>
-                    <div class="row justify-content-sm-between">
-                        <div class="col-4 col-md-2 mb-4">
-                            <h6 class="">Navigation</h6>
-                            <ul class="nav flex-column">
-                                <li class="mb-1"><a href="@Url.Action("Index", "Home")" class="text-muted">Home</a></li>
-                                <li class="mb-1"><a href="@Url.Action("About", "Home")" class="text-muted">About</a></li>
-                                <li class="mb-1"><a href="@Url.Action("Education", "Home")" class="text-muted">Education</a></li>
-                                <li class="mb-1"><a href="@Url.Action("MediaPlan", "Home")" class="text-muted">Media PLan</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-4 col-md-2 mb-4">
-                            <h6 class="mb-3">Visualisation</h6>
-                            <ul class="nav flex-column">
-                                <li class="mb-1"><a href="@Url.Action("ScreenTime", "Home")" class="text-muted">Screen Time</a></li>
-                                <li class="mb-1"><a href="@Url.Action("GameTime", "Home")" class="text-muted">Game Time</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-4 col-md-2 mb-4">
-                            <h6 class="mb-3">Acknowledgement</h6>
-                            <ul class="nav flex-column">
-                                <li class="mb-1"><a href="#" class="text-muted">Credits</a></li>
-                                <li class="mb-1"><a href="#" class="text-muted">Resources</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-12 col-md-4 mb-4">
-                            <h6 class="mb-3">ScreenOut</h6>
-                            <p class="text-muted">ScreenOut is a web platform designed for parents to know more about issues related to screen time, which have potential influence over a child's whole life.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="row border-top border-white pt-3">
-                        <div class="col">
-                            &copy; @DateTime.Now.Year ScreenOut | All Rights Reserved
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
+        @Html.Partial("_FooterPartial")
     </div>
 
     @* Scroll to top button *@

@@ -17,7 +17,7 @@
 </div>
 
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><span id="eventTitle"></span></h4>
@@ -25,10 +25,10 @@
             </div>
             <div class="modal-body">
                 <button id="btnDelete" class="btn btn-warning btn-sm float-right">
-                    <span class="glyphicon glyphicon-remove"></span> Remove
+                    Remove
                 </button>
                 <button id="btnEdit" class="btn btn-primary btn-sm float-right" style="margin-right:5px;">
-                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                    Edit
                 </button>
                 <p id="pDetails"></p>
             </div>
@@ -40,40 +40,36 @@
 </div>
 
 <div id="myModalSave" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Save Event</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form class="">
+                <form class="form-horizontal">
                     <input type="hidden" id="hdEventID" value="0" />
                     <div class="form-group">
-                        <label>Subject</label>
+                        <label>Event Name</label>
                         <input type="text" id="txtSubject" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label>Start</label>
-                        <div class="input-group date" id="dtp1">
-                            <input type="text" id="txtStart" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <label>Start Date</label>
+                        <div class="row">
+                            <div class="col-8"><input type="text" id="txtStart" class="form-control" /></div>
+                            <div class="col-4"><input type="time" id="txtStartTime" class="form-control" /></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
-                        </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chkIsFullDay">
+                        <label class="custom-control-label" for="chkIsFullDay">Full Day Event</label>
                     </div>
-                    <div class="form-group" id="divEndDate" style="display:none">
-                        <label>End</label>
-                        <div class="input-group date" id="dtp2">
-                            <input type="text" id="txtEnd" class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                   
+                    <div class="form-group" id="divEndDate">
+                        <label>End Date</label>
+                        <div class="row">
+                            <div class="col-8"><input type="text" id="txtEnd" class="form-control" /></div>
+                            <div class="col-4"><input type="time" id="txtEndTime" class="form-control" /></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -98,16 +94,16 @@
     </div>
 </div>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
+        var test = null;
         $(document).ready(function () {
             var events = [];
             var selectedEvent = null;
@@ -116,7 +112,7 @@
                 events = [];
                 $.ajax({
                     type: "GET",
-                    url: "/activities/GetEvents",
+                    url: "@Url.Action("GetEvents", "Activities")",
                     success: function (data) {
                         $.each(data, function (i, v) {
                             events.push({
@@ -145,9 +141,9 @@
                     defaultDate: new Date(),
                     timeFormat: 'h(:mm)a',
                     header: {
-                        left: 'prev,next today',
+                        left: 'prev, next today',
                         center: 'title',
-                        right: 'month,basicWeek,basicDay,agenda'
+                        right: 'month,basicWeek,agenda'
                     },
                     eventLimit: true,
                     eventColor: '#378006',
@@ -156,13 +152,12 @@
                         selectedEvent = calEvent;
                         $('#myModal #eventTitle').text(calEvent.title);
                         var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
-                        if (calEvent.end != null) {
-                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
-                        }
-                        $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
-                        $('#myModal #pDetails').empty().html($description);
 
+                        $description.append($('<p/>').html('<b>Start Date: </b>' + calEvent.start.format("DD-MMM-YYYY hh:mm A")));
+                        $description.append($('<p/>').html('<b>End Date: </b>' + calEvent.end.format("DD-MMM-YYYY hh:mm A")));
+                        $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
+                      
+                        $('#myModal #pDetails').empty().html($description);
                         $('#myModal').modal();
                     },
                     selectable: true,
@@ -184,8 +179,8 @@
                         var data = {
                             Id: event.eventID,
                             Subject: event.title,
-                            Start: event.start.format('DD/MM/YYYY HH:mm A'),
-                            End: event.end != null ? event.end.format('DD/MM/YYYY HH:mm A') : null,
+                            Start: event.start.format('DD/MM/YYYY hh:mm A'),
+                            End: event.end.format('DD/MM/YYYY hh:mm A'),
                             Description: event.description,
                             ThemeColor: event.color,
                             IsFullDay: event.allDay
@@ -200,10 +195,10 @@
                 openAddEditForm();
             })
             $('#btnDelete').click(function () {
-                if (selectedEvent != null && confirm('Are you sure?')) {
+                if (selectedEvent != null && confirm('Are you sure to delete the selected event?')) {
                     $.ajax({
                         type: "POST",
-                        url: '/activities/DeleteEvent',
+                        url: '@Url.Action("DeleteEvent", "Activities")',
                         data: { 'eventID': selectedEvent.eventID },
                         success: function (data) {
                             if (data.status) {
@@ -219,36 +214,55 @@
                 }
             })
 
-            $('#dtp1,#dtp2').datetimepicker({
-                format: 'DD/MM/YYYY HH:mm A'
+            $('#txtStart').datepicker({
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+                format: 'dd/M/yyyy'
             });
+            $('#txtStart').datepicker("setDate", new Date());
+
+            $('#txtEnd').datepicker({
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+                format: 'dd/M/yyyy'
+            });
+            $('#txtEnd').datepicker("setDate", new Date());
 
             $('#chkIsFullDay').change(function () {
                 if ($(this).is(':checked')) {
-                    $('#divEndDate').hide();
+                    $('#txtStartTime').prop("disabled", true);
+                    $('#txtEndTime').prop("disabled", true);
                 }
                 else {
-                    $('#divEndDate').show();
+                    $('#txtStartTime').prop("disabled", false);
+                    $('#txtEndTime').prop("disabled", false);
                 }
             });
 
             function openAddEditForm() {
-                if (selectedEvent != null) {
-                    $('#hdEventID').val(selectedEvent.eventID);
-                    $('#txtSubject').val(selectedEvent.title);
-                    $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
-                    $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
-                    $('#chkIsFullDay').change();
-                    $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('DD/MM/YYYY HH:mm A') : '');
-                    $('#txtDescription').val(selectedEvent.description);
-                    $('#ddThemeColor').val(selectedEvent.color);
-                }
+                $('#hdEventID').val(selectedEvent.eventID);
+                $('#txtSubject').val(selectedEvent.title);
+                $('#txtStart').val(selectedEvent.start.format('DD/MMM/YYYY'));
+                $("#txtStartTime").val(selectedEvent.start.format('HH:mm'));
+                $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+                $('#chkIsFullDay').change();
+                $('#txtEnd').val(selectedEvent.end.format('DD/MMM/YYYY'));
+                $('#txtEndTime').val(selectedEvent.end.format('HH:mm'));
+                $('#txtDescription').val(selectedEvent.description);
+                $('#ddThemeColor').val(selectedEvent.color);
                 $('#myModal').modal('hide');
                 $('#myModalSave').modal();
             }
 
             $('#btnSave').click(function () {
                 //Validation/
+                var startDate, endDate;
+                var startDateString, endDateString;
+
                 if ($('#txtSubject').val().trim() == "") {
                     alert('Subject required');
                     return;
@@ -257,15 +271,31 @@
                     alert('Start date required');
                     return;
                 }
-                if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
+                if ($('#txtStartTime').val().trim() == "") {
+                    alert("Start time cannot be blank");
+                    return;
+                }
+                if ($('#txtEnd').val().trim() == "") {
                     alert('End date required');
                     return;
                 }
+                if ($('#txtEndTime').val().trim() == "") {
+                    alert("End time cannot be blank");
+                    return;
+                }
                 else {
-                    var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
-                    var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
-                    if (startDate > endDate) {
-                        alert('Invalid end date');
+                    if ($('#chkIsFullDay').is(':checked') == false) {
+                        startDateString = $('#txtStart').val() + " " + $('#txtStartTime').val();
+                        endDateString = $('#txtEnd').val() + " " + $('#txtEndTime').val();
+                    } else {
+                        startDateString = $('#txtStart').val() + " 00:00";
+                        endDateString = $('#txtEnd').val() + " 00:00";
+                    } 
+
+                    startDate = new Date(startDateString);
+                    endDate = new Date(endDate);
+                    if (startDate >= endDate) {
+                        alert('End Date cannot be earlier than or the same as Start Date!');
                         return;
                     }
                 }
@@ -273,8 +303,8 @@
                 var data = {
                     Id: $('#hdEventID').val(),
                     Subject: $('#txtSubject').val().trim(),
-                    Start: $('#txtStart').val().trim(),
-                    End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+                    Start: startDateString,
+                    End: endDateString,
                     Description: $('#txtDescription').val(),
                     ThemeColor: $('#ddThemeColor').val(),
                     IsFullDay: $('#chkIsFullDay').is(':checked')

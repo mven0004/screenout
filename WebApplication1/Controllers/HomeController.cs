@@ -33,6 +33,11 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Credits()
+        {
+            return View();
+        }
+
         public ActionResult Cause()
         {
             ViewBag.Message = "Your casuse page.";
