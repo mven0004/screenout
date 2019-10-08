@@ -11,6 +11,7 @@ using WebApplication1.Models;
 
 namespace identity.Controllers
 {
+    [Authorize]
     public class ActivitiesController : Controller
     {
         public ActionResult Index()

@@ -104,6 +104,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
         var test = null;
+
+        function getTimeZoneString() {
+            // Tue Oct 08 2019 22:03:11 GMT+1100 (Australian Eastern Daylight Time)
+            // data.indexOf("GMT") >> 25
+            // we want the part "GMT..." so that we get recreate date for that local machine
+            var date = new Date();
+            return date.toString().substring(24);
+        }
+
         $(document).ready(function () {
             var events = [];
             var selectedEvent = null;
@@ -221,7 +230,7 @@
                 todayHighlight: true,
                 format: 'dd/M/yyyy'
             });
-            $('#txtStart').datepicker("setDate", new Date());
+            //$('#txtStart').datepicker("setDate", new Date());
 
             $('#txtEnd').datepicker({
                 weekStart: 1,
@@ -230,7 +239,7 @@
                 todayHighlight: true,
                 format: 'dd/M/yyyy'
             });
-            $('#txtEnd').datepicker("setDate", new Date());
+            //$('#txtEnd').datepicker("setDate", new Date());
 
             $('#chkIsFullDay').change(function () {
                 if ($(this).is(':checked')) {
@@ -285,11 +294,11 @@
                 }
                 else {
                     if ($('#chkIsFullDay').is(':checked') == false) {
-                        startDateString = $('#txtStart').val() + " " + $('#txtStartTime').val();
-                        endDateString = $('#txtEnd').val() + " " + $('#txtEndTime').val();
+                        startDateString = $('#txtStart').val() + " " + $('#txtStartTime').val() + getTimeZoneString();
+                        endDateString = $('#txtEnd').val() + " " + $('#txtEndTime').val() + getTimeZoneString();
                     } else {
-                        startDateString = $('#txtStart').val() + " 00:00";
-                        endDateString = $('#txtEnd').val() + " 00:00";
+                        startDateString = $('#txtStart').val() + " 00:00" + getTimeZoneString();
+                        endDateString = $('#txtEnd').val() + " 00:00" + getTimeZoneString();
                     } 
 
                     startDate = new Date(startDateString);
@@ -316,9 +325,11 @@
             function SaveEvent(data) {
                 $.ajax({
                     type: "POST",
-                    url: '/activities/SaveEvent',
+                    url: "@Url.Action("SaveEvent", "Activities")",
                     data: data,
                     success: function (data) {
+                        test = data;
+                        console.log(test);
                         if (data.status) {
                             //Refresh the calender
                             FetchEventAndRenderCalendar();
