@@ -154,6 +154,9 @@
             <div class="col-12 text-center">
                 <h2 class="hero-title text-white title1"><b>Is your kid always in front of a screen?</b></h2>
                 <p class="describ text-white text-center">Do you know how much harm it is causing?</p>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-info" href="@Url.Action("ScreenTime", "Home")">Know more</a>
+                </div>
             </div>
         </div>
     </div>
@@ -232,14 +235,14 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <a class="fade-up">
-                            <h3 class="titlesolu">Know What To Do</h3>
+                            <h3 class="titlesolu">Building good habits</h3>
                         </a>
                         <p class="lead contentsolu">
                             Raising a child is a two-way street.
                             Want to educate yourself and help your child develop good habits?
-                            Take our simple quiz to learn more!
+                            Answer some scenarios and be more aware.
                         </p>
-                        @Html.ActionLink("Take a Quiz", "Education", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Start now", "Education", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@
                     <!-- Dropdown -->
                     <li class="@(ViewBag.CurrentPage == "Research" ? "nav-item dropdown active" : "nav-item dropdown")">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Research
+                            Statistics
                         </a>
                         <div class="dropdown-menu">
                             @Html.ActionLink("Screen usage and issues", "ScreenTime", "Home", null, new { @class = "dropdown-item" })
@@ -36,7 +36,7 @@
                     </li>
 
                     <li class="@(ViewBag.CurrentPage == "Education" ? "nav-item active" : "nav-item")">
-                        @Html.ActionLink("Educate yourself", "Education", "Home", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Developing habits", "Education", "Home", null, new { @class = "nav-link" })
                     </li>
                     <li class="@(ViewBag.CurrentPage == "MediaPlan" ? "nav-item active" : "nav-item")">
                         @Html.ActionLink("Screen time plan", "MediaPlan", "Home", null, new { @class = "nav-link" })

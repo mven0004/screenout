@@ -60,6 +60,9 @@
                 <h2 class="hero-title text-white title1"><b>Issue and usage of screens</b></h2>
                 <p class="describ text-white text-center">Is your child following the recommended daily screen time by AIHW?</p>
                 <p class="describ text-white text-center">Does your child use electronic devices while sleeping?</p>
+                <div class="d-flex justify-content-center">
+                    
+                </div>
                 @*<a class="btn btn-outline-primary call-action" href="#GamerPercentageChart" onclick="SmoothScrollTo(event)">Gamer Percentage</a>
                     <a class="btn btn-outline-primary call-action" href="#AvgGameTimeChart" onclick="SmoothScrollTo(event)">Game Time</a>
                     <a class="btn btn-outline-primary call-action" href="#GuidelineChart" onclick="SmoothScrollTo(event)">Guideline</a>*@
@@ -74,10 +77,9 @@
             <div class="col-md-4">
                 <div class="card shadow p-3 bg-white rounded h-100">
                     <div class="card-body">
-                        <h4 class="service-heading">How is screen time harming sleep?</h4>
+                        <h4 class="service-heading">How is Screen Time Harming Sleep?</h4>
                         <p class="text-muted">
-                            More screen time results in <b>sleep deprivation</b>. 
-                            One hour increase in screen time reduces the sleep time by <b>20%</b>.
+                            More screen time results in <strong>sleep deprivation</strong>. One hour increase in screen time reduces the sleep time by <strong>20%</strong>.
                         </p>
                     </div>
                 </div>
@@ -85,7 +87,7 @@
             <div class="col-md-4">
                 <div class="card shadow p-3 bg-white rounded h-100">
                     <div class="card-body">
-                        <h4 class="service-heading">Screen Time Recommendation</h4>
+                        <h4 class="service-heading">Screen Time Usage</h4>
                         <p class="text-muted">
                             Kids are spending <b>3 times</b> the <b>recommended daily screen time</b> by health department in various countries.
                         </p>
@@ -112,12 +114,17 @@
         <div class="row mb-3 mt-3 pb-3" style="border-bottom: 1px solid #cfcfcf">
             <div id="chart_screentime_sleeptime" class="chart col-lg-6 order-lg-2"></div>
             <div class="col-lg-6 order-lg-1 pt-3">
-                <h3>Screen Time and Sleep Time Negative Correlation</h3>
+                <h3>How is Screen Time Harming Sleep?</h3>
                 <p class="lead mb-0">
-                    Screen time and sleep duration have been shown to have to negative correlation as seen in the chart.
-                    Even though different screen time activities have varying effects on sleep duration, it is recommended that
-                    parents should monitor or set limit their children's screen time usage.
+                    Screen time is shown to have a negative effect on sleep time. Even though different screen time activities have varying effects on sleep duration, it is recommended that parents should monitor or set limit their children's screen time usage.
                 </p>
+                <div class="float-right mt-5">
+                    <em>
+                        <a href="https://bmjopen.bmj.com/content/bmjopen/5/1/e006748.full.pdf" target="_blank">
+                            * Sleep and use of electronic devices in adolescence
+                        </a>
+                    </em>
+                </div>
             </div>
         </div>
 
@@ -210,7 +217,7 @@
         data.addColumn('string', "Activity");
         data.addColumn('number', "Female");
         data.addColumn('number', "Male");
-        data.addColumn('number', "Recommended Guidline");
+        data.addColumn('number', "Recommended Guideline");
         data.addColumn({ type: 'string', role: 'annotation' });
         data.addRows([
             ['Console games', 0.1, 0.9, 2, null],

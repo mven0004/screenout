@@ -242,6 +242,7 @@
     <Content Include="img\information-icon-16x16.png" />
     <Content Include="img\learn.png" />
     <Content Include="img\media-plan-banner.jpg" />
+    <Content Include="img\media-plan-screenshot.png" />
     <Content Include="img\overview-screenshot.PNG" />
     <Content Include="img\plan1.jpg" />
     <Content Include="img\s1.jpg" />
@@ -345,7 +346,7 @@
     <Content Include="Views\Home\StepsOfSolve.cshtml" />
     <Content Include="Views\Home\QuizTest.cshtml" />
     <Content Include="Views\Home\sent.cshtml" />
-    <Content Include="Views\Home\education.cshtml" />
+    <Content Include="Views\Home\Education.cshtml" />
     <Content Include="Views\Home\ScreenTime.cshtml" />
     <Content Include="Views\Home\GameTime.cshtml" />
     <Content Include="Views\Home\MediaPlan.cshtml" />

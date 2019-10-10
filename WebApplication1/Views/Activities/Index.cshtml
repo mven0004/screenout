@@ -7,6 +7,7 @@
     <div class="col-12">
         <h3 class="text-primary">Activity Calendar</h3>
         <hr />
+        <p>Click on any date below and add an activity to do with yourchild.</p>
     </div>
 </div>
 
@@ -24,7 +25,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <button id="btnDelete" class="btn btn-warning btn-sm float-right">
+                <button id="btnDelete" class="btn btn-danger btn-sm float-right">
                     Remove
                 </button>
                 <button id="btnEdit" class="btn btn-primary btn-sm float-right" style="margin-right:5px;">
@@ -50,7 +51,7 @@
                 <form class="form-horizontal">
                     <input type="hidden" id="hdEventID" value="0" />
                     <div class="form-group">
-                        <label>Event Name</label>
+                        <label>Activity Name</label>
                         <input type="text" id="txtSubject" class="form-control" />
                     </div>
                     <div class="form-group">
@@ -110,7 +111,7 @@
             // data.indexOf("GMT") >> 25
             // we want the part "GMT..." so that we get recreate date for that local machine
             var date = new Date();
-            return date.toString().substring(24);
+            return date.toString().substr(24, 9);
         }
 
         $(document).ready(function () {
@@ -165,7 +166,7 @@
                         $description.append($('<p/>').html('<b>Start Date: </b>' + calEvent.start.format("DD-MMM-YYYY hh:mm A")));
                         $description.append($('<p/>').html('<b>End Date: </b>' + calEvent.end.format("DD-MMM-YYYY hh:mm A")));
                         $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
-                      
+
                         $('#myModal #pDetails').empty().html($description);
                         $('#myModal').modal();
                     },
@@ -299,10 +300,10 @@
                     } else {
                         startDateString = $('#txtStart').val() + " 00:00" + getTimeZoneString();
                         endDateString = $('#txtEnd').val() + " 00:00" + getTimeZoneString();
-                    } 
+                    }
 
                     startDate = new Date(startDateString);
-                    endDate = new Date(endDate);
+                    endDate = new Date(endDateString);
                     if (startDate >= endDate) {
                         alert('End Date cannot be earlier than or the same as Start Date!');
                         return;
@@ -312,25 +313,23 @@
                 var data = {
                     Id: $('#hdEventID').val(),
                     Subject: $('#txtSubject').val().trim(),
-                    Start: startDateString,
-                    End: endDateString,
+                    Start: startDate.toISOString(),
+                    End: endDate.toISOString(),
                     Description: $('#txtDescription').val(),
                     ThemeColor: $('#ddThemeColor').val(),
                     IsFullDay: $('#chkIsFullDay').is(':checked')
                 }
-                SaveEvent(data);
                 // call function for submit data to the server
+                SaveEvent(data);
             })
 
-            function SaveEvent(data) {
+            function SaveEvent(activity) {
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("SaveEvent", "Activities")",
-                    data: data,
-                    success: function (data) {
-                        test = data;
-                        console.log(test);
-                        if (data.status) {
+                    data: activity,
+                    success: function (response) {
+                        if (response.status) {
                             //Refresh the calender
                             FetchEventAndRenderCalendar();
                             $('#myModalSave').modal('hide');

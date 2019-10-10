@@ -78,11 +78,15 @@
                 <h1>
                     CHANGING BEHAVIOURS
                 </h1>
-                <h5>
-                    Make a family media plan today. Set screen time your kids to follow at home and track their progress with us.
-                    Take control of developing good habits for a better and brighter future.
-                </h5>
-                <a href="@Url.Action("Login", "Account")" class="btn btn-primary mt-3 mb-3">                    Set Plan Now                </a>
+
+                @if (ViewBag.IsLoggedIn)
+                {
+                    <a href="@Url.Action("Index", "Dashboard")" class="btn btn-primary mt-3 mb-3">Set Plan Now</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Register", "Account")" class="btn btn-primary mt-3 mb-3">Set Plan Now</a>
+                }
             </div>
         </div>
     </div>
@@ -91,8 +95,131 @@
 <span id="one"></span>
 <div class="container pt-5">
     <div class="row">
-        <div class="col-md-12">
-            <img src="~/img/overview-screenshot.PNG" class="img-fluid" />
+        <div class="col-md-4">
+            <ul>
+                <li>Prepare a screen time plan for your kids today.</li>
+                <li>Set goals for your kids, track their progress and make weekly commitments.</li>
+                <li>Prepare a custom dashboard for yourself.</li>
+                <li>Take control of developing good habits for a better and brighter future.</li>
+                <li>Like what you see? Click below and start now.</li>
+            </ul>
+            @if (ViewBag.IsLoggedIn)
+            {
+                @Html.ActionLink("Start now", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Start now", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+        </div>
+        <div class="col-md-8">
+            <img src="~/img/media-plan-screenshot.png" />
+        </div>
+    </div>
+</div>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                <li>Prepare a screen time plan for your kids today.</li>
+                <li>Set goals for your kids, track their progress and make weekly commitments.</li>
+                <li>Prepare a custom dashboard for yourself.</li>
+                <li>Take control of developing good habits for a better and brighter future.</li>
+                <li>Like what you see? Click below and start now.</li>
+            </ul>
+            @if (ViewBag.IsLoggedIn)
+            {
+                @Html.ActionLink("Start now", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Start now", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+        </div>
+        <div class="col-md-8">
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide bg-dark" data-ride="carousel"">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex align-items-center">
+                                <img src="~/img/overview-screenshot.PNG" class="d-block w-100" />
+                            </div>
+                            <div class="d-block bg-dark text-white text-center justify-content-center mb-4">
+                                <h5>Personalised Dashboard</h5>
+                                <p>Get a custom dashboard for yourself</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex align-items-center">
+                                <img src="~/img/children-list-screenshot.PNG" class="d-block w-100" />
+                            </div>
+                                
+                            <div class="d-block bg-dark text-white text-center justify-content-center  mb-4">
+                                <h5>Screen Time Goal for Your Child</h5>
+                                <p>Prepare a screen time plan for your kids today</p>
+                            </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/img/child-progress-screenshot.PNG" class="d-block w-100" />
+                                </div>
+                                
+                                <div class="d-block bg-dark text-white text-center justify-content-center  mb-4">
+                                    <h5>Personalised Dashboard for Your Child</h5>
+                                    <p>Set goals for your kids, track their progress and make weekly commitments</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/img/child-progress-screenshot-2.PNG" class="d-block w-100" />
+                                </div>
+                                
+                                <div class="d-block bg-dark text-white text-center justify-content-center  mb-4">
+                                    <h5>Personalised Dashboard for Your Child</h5>
+                                    <p>Set goals for your kids, track their progress and make weekly commitments</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/img/child-progress-screenshot-3.PNG" class="d-block w-100  mb-4" />
+                                </div>
+                                
+                                <div class="d-block bg-dark text-white text-center justify-content-center">
+                                    <h5>Personalised Dashboard for Your Child</h5>
+                                    <p>Set goals for your kids, track their progress and make weekly commitments</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/img/activity-screenshot.PNG" class="d-block w-100  mb-4" />
+                                </div>
+                                
+                                <div class="d-block bg-dark text-white text-center justify-content-center">
+                                    <h5>Plan Family Activities</h5>
+                                    <p>Take control of developing good habits for a better and brighter future</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    <a class="carousel-control-prev text-dark" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next text-dark" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

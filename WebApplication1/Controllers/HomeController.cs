@@ -76,8 +76,18 @@ namespace WebApplication1.Controllers
 
         public ActionResult MediaPlan()
         {
+            // check if user already logged in
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.IsLoggedIn = true;
+            }
+            else
+            {
+                ViewBag.IsLoggedIn = false;
+            }
             return View();
         }
+
         public ActionResult Plan()
         {
             return View();
