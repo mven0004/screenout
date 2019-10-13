@@ -154,9 +154,8 @@
             <div class="col-12 text-center">
                 <h2 class="hero-title text-white title1"><b>Is your kid always in front of a screen?</b></h2>
                 <p class="describ text-white text-center">Do you know how much harm it is causing?</p>
-                <div class="d-flex justify-content-center">
-                    <a class="btn btn-info" href="@Url.Action("ScreenTime", "Home")">Know more</a>
-                </div>
+                <a href="@Url.Action("ScreenTime", "Home")" class="btn btn-secondary">Learn more</a>
+                <a href="@Url.Action("Login", "Account")" class="btn btn-primary">Take action now</a>
             </div>
         </div>
     </div>
@@ -172,7 +171,7 @@
                             <h3 class="titlesolu">Problem of Screen time </h3>
                         </a>
                         <p class="lead contentsolu">
-                            The <b>recommended</b> guide line by AIHW of screen time per day is <b>2 hours</b> for kids but only about <b>30%</b> kids meet the recommendation guideline. Adolescent Brain Cognitive Development (ABCD) study indicate that children who reported <b>more than two hours</b> a day of screen time got <b>lower scores</b> on thinking and language tests.<b>75%</b> of kids between 9 to10 years old may <b>suffer from sleep deficiency, poor behaviors</b> in child development in all aspects because of long time on electronicproduct. See what <b>research says</b>...
+                            Only <b>30%</b> kids meet the <b>2-hour recommended guideline</b> on screen time usage per day. Children spending <b>more than two hours</b> a day tend to get lower scores on thinking and language tests. <b>75%</b> of kids between 9 to 10 years old may suffer from <b>sleep deficiency, poor behaviours</b> because of excessive usage on electronic devices. See what <b>research says!</b>
                         </p>
                         <button type="button" class="btn btn-primary" onclick="window.location.href='Home/ScreenTime'">Know more</button>
                     </div>
@@ -196,7 +195,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
-                    <img src="../../img/9.png" class="card-img-top">
+                    <img src="../../img/did-you-know-1.png" class="card-img-top">
                     <div class="card-body">
                         <h5>The age at which habits develop in kids and unlikely change in future.</h5>
                     </div>
@@ -204,7 +203,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <img src="../../img/you.png" class="card-img-top">
+                    <img src="../../img/did-you-know-2.png" class="card-img-top">
                     <div class="card-body">
                         <h5>Developing good habits start from YOU. Child copies what you do. Be the PERFECT role model.</h5>
                     </div>
@@ -212,7 +211,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                        <img src="../../img/learn.png" class="card-img-top">
+                        <img src="../../img/did-you-know-3.png" class="card-img-top">
                     <div class="card-body">
                         <h5>Treat any failure of your child as a learning experience. Help your child be more resilient!</h5>
                     </div>
@@ -235,11 +234,11 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <a class="fade-up">
-                            <h3 class="titlesolu">Building good habits</h3>
+                            <h3 class="titlesolu">Building healthy habits</h3>
                         </a>
                         <p class="lead contentsolu">
                             Raising a child is a two-way street.
-                            Want to educate yourself and help your child develop good habits?
+                            Want to educate yourself and help your child develop healthy habits?
                             Answer some scenarios and be more aware.
                         </p>
                         @Html.ActionLink("Start now", "Education", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
@@ -263,9 +262,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <p class="lead contentsolu">
-                            Negotiate with your child.
-                            Take a step and develop good habits TODAY. Not sure
-                            how to start? Let us help you!
+                            Reduce your child’s screen time. Set goals and make weekly commitments. Take a step and develop healthy habits TODAY. Not sure how to start? Let us help you!
                         </p>
                         @Html.ActionLink("Let's make a plan", "MediaPlan", routeValues: null, htmlAttributes: new { @class = "btn btn-primary mb-5" })
                     </div>

@@ -21,27 +21,42 @@ namespace WebApplication1.Controllers
         {
             // retrieve tracked data for the login user
             var userId = User.Identity.GetUserId();
-            var userIdParam = new SqlParameter("@UserId", userId);
-            var overview = db.Database.SqlQuery<OverviewViewModel>("GetOverviewData @UserId", userIdParam).First();
+            var children = db.Children.Where(child => child.UserId == userId).ToList();
 
             // check if the login user has any child record
-            if (overview.ChildCount == 0)
+            if (children.Count == 0)
             {
                 ViewBag.PageStatus = "NOCHILD";
                 return View();
             }
-            else if (overview.AvgFamilyTime == -1)
+
+            List<ChildOverviewViewModel> childOverviewList = new List<ChildOverviewViewModel>(children.Count);
+            foreach (Child child in children)
+            {
+                var userIdParam = new SqlParameter("@UserId", userId);
+                var childIdParam = new SqlParameter("@ChildId", child.Id);
+                var curDateParam = new SqlParameter("@CurDate", DateTime.Now);
+                var childOverview = db.Database.SqlQuery<ChildOverviewViewModel>
+                    ("GetChildOverviewData @UserId, @ChildId, @CurDate", userIdParam, childIdParam, curDateParam).First();
+                childOverview.ChildId = child.Id;
+                childOverview.ChildName = child.Name;
+                childOverview.ScreenTimeGoal = child.ScreenTimeGoal;
+
+                // add child to the list for displaying in the View
+                childOverviewList.Add(childOverview);
+            }
+
+            bool noTrackingData = childOverviewList.All(c => c.MetGoalPercentage == -1);
+            if (noTrackingData == true)
             {
                 ViewBag.PageStatus = "NOTRACKING";
-                overview.AvgFamilyTime = 0;
-                overview.AvgScreenTime = 0;
-                return View(overview);
             }
             else
             {
                 ViewBag.PageStatus = "WITHTRACKING";
-                return View(overview);
             }
+
+            return View(childOverviewList);
         }
 
         public ActionResult GetTrackedDataSummary()

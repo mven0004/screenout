@@ -3,6 +3,12 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
+<style>
+    .fc-content {
+        color: #ffffff !important;
+    }
+</style>
+
 <div class="row">
     <div class="col-12">
         <h3 class="text-primary">Activity Calendar</h3>
@@ -11,8 +17,8 @@
     </div>
 </div>
 
-<div class="row bg-white pt-3 pb-3 rounded">
-    <div class="col-12">
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
         <div id="calender" class=""></div>
     </div>
 </div>
@@ -65,7 +71,7 @@
                         <input type="checkbox" class="custom-control-input" id="chkIsFullDay">
                         <label class="custom-control-label" for="chkIsFullDay">Full Day Event</label>
                     </div>
-                   
+
                     <div class="form-group" id="divEndDate">
                         <label>End Date</label>
                         <div class="row">
@@ -104,8 +110,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
-        var test = null;
-
         function getTimeZoneString() {
             // Tue Oct 08 2019 22:03:11 GMT+1100 (Australian Eastern Daylight Time)
             // data.indexOf("GMT") >> 25
@@ -139,7 +143,7 @@
                         GenerateCalender(events);
                     },
                     error: function (error) {
-                        alert('fail start');
+                        alert('There is an error on our site. We will fix the issue for sure.');
                     }
                 })
             }
@@ -165,7 +169,7 @@
 
                         $description.append($('<p/>').html('<b>Start Date: </b>' + calEvent.start.format("DD-MMM-YYYY hh:mm A")));
                         $description.append($('<p/>').html('<b>End Date: </b>' + calEvent.end.format("DD-MMM-YYYY hh:mm A")));
-                        $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
+                        $description.append($('<p/>').html('<b>Description: </b>' + (calEvent.description == null ? "" : calEvent.description)));
 
                         $('#myModal #pDetails').empty().html($description);
                         $('#myModal').modal();
@@ -218,7 +222,7 @@
                             }
                         },
                         error: function () {
-                            alert('Failed delete');
+                            alert('Cannot delete the activity now. There is an error on our site. We will fix the issue for sure.');
                         }
                     })
                 }
@@ -336,7 +340,7 @@
                         }
                     },
                     error: function () {
-                        alert('Fail save');
+                        alert('Cannot save the activity now. There is an error on our site. We will fix the issue for sure.');
                     }
                 })
             }

@@ -150,27 +150,24 @@ namespace WebApplication1.Controllers
             // retrieve tracked data for the login user
             var userIdParam = new SqlParameter("@UserId", userId);
             var childIdParam = new SqlParameter("@ChildId", child.Id);
+            var curDateParam = new SqlParameter("@CurDate", DateTime.Now);
             var childOverview = db.Database.SqlQuery<ChildOverviewViewModel>
-                ("GetChildOverviewData @UserId, @ChildId", userIdParam, childIdParam).First();
+                ("GetChildOverviewData @UserId, @ChildId, @CurDate", userIdParam, childIdParam, curDateParam).First();
 
             childOverview.ChildId = child.Id;
             childOverview.ChildName = child.Name;
             childOverview.ScreenTimeGoal = child.ScreenTimeGoal;
 
             // check if there is any tracked data for this child
-            if (childOverview.AvgFamilyTime == -1)
+            if (childOverview.MetGoalPercentage == -1)
             {
                 ViewBag.PageStatus = "NOTRACKING";
-                childOverview.AvgFamilyTime = 0;
-                childOverview.AvgScreenTime = 0;
-                childOverview.MetGoalPercent = 0;
-                return View(childOverview);
             }
             else
             {
                 ViewBag.PageStatus = "WITHTRACKING";
-                return View(childOverview);
             }
+            return View(childOverview);
         }
 
         public ActionResult GetOverviewData(int id)
@@ -179,11 +176,13 @@ namespace WebApplication1.Controllers
             var userId = User.Identity.GetUserId();
             var userIdParam = new SqlParameter("@UserId", userId);
             var childIdParam = new SqlParameter("@ChildId", id);
+            var curDateParam = new SqlParameter("@CurDate", DateTime.Now);
             var childOverview = db.Database.SqlQuery<ChildOverviewViewModel>
-                ("GetChildOverviewData @UserId, @ChildId", userIdParam, childIdParam).First();
+                ("GetChildOverviewData @UserId, @ChildId, @CurDate", userIdParam, childIdParam, curDateParam).First();
 
             return Content(JsonConvert.SerializeObject(childOverview), "application/json");
         }
+
         public ActionResult GetTrackedData(int? id)
         {
             if (id == null)

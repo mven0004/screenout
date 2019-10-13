@@ -196,10 +196,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910070612144_AddActivitiesAndUserActivities.cs" />
-    <Compile Include="Migrations\201910070612144_AddActivitiesAndUserActivities.Designer.cs">
-      <DependentUpon>201910070612144_AddActivitiesAndUserActivities.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -225,25 +221,24 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\9.png" />
     <Content Include="img\arrow-up.png" />
     <Content Include="img\beverage.jpg" />
     <Content Include="img\bg_homepage.jpg" />
-    <Content Include="img\child-progress-screenshot.PNG" />
+    <Content Include="img\did-you-know-1.png" />
+    <Content Include="img\did-you-know-2.png" />
+    <Content Include="img\did-you-know-3.png" />
     <Content Include="img\educate-yourself-banner.jpg" />
+    <Content Include="img\educate-yourself-banner_cr.jpg" />
     <Content Include="img\form.jpg" />
     <Content Include="img\game-time-banner.jpg" />
     <Content Include="img\home4.jpg" />
     <Content Include="img\homepageproblem.jpg" />
     <Content Include="img\homepagetodo.jpg" />
     <Content Include="img\information-icon-16x16.png" />
-    <Content Include="img\learn.png" />
     <Content Include="img\media-plan-banner.jpg" />
-    <Content Include="img\media-plan-screenshot.png" />
-    <Content Include="img\overview-screenshot.PNG" />
+    <Content Include="img\media-plan-banner_cr.jpg" />
     <Content Include="img\plan1.jpg" />
     <Content Include="img\s1.jpg" />
     <Content Include="img\s2.jpg" />
@@ -252,6 +247,12 @@
     <Content Include="img\s5.jpg" />
     <Content Include="img\screen-time-banner.jpg" />
     <Content Include="img\screenout-logo.png" />
+    <Content Include="img\screenshot-1.png" />
+    <Content Include="img\screenshot-2.png" />
+    <Content Include="img\screenshot-3.png" />
+    <Content Include="img\screenshot-4.png" />
+    <Content Include="img\screenshot-5.png" />
+    <Content Include="img\screenshot-6.png" />
     <Content Include="img\startup.jpg" />
     <Content Include="img\static1.jpg" />
     <Content Include="img\computer.jpg" />
@@ -261,13 +262,8 @@
     <Content Include="img\connect.jpg" />
     <Content Include="img\camera-1840625_1920.png" />
     <Content Include="img\camera-coffee-composition-1509428.jpg" />
-    <Content Include="img\della.jpg" />
     <Content Include="img\informationbg.jpg" />
-    <Content Include="img\matt.jpg" />
-    <Content Include="img\sackcloth-1280539_1920.jpg" />
-    <Content Include="img\shrivam.jpg" />
     <Content Include="img\videocontroller.jpg" />
-    <Content Include="img\you.png" />
     <Content Include="Properties\plan1.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -292,11 +288,8 @@
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Content\timeline.scss" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\gameaway20190825070851 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\screenout20191010065449 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\inforScript.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -400,11 +393,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910070612144_AddActivitiesAndUserActivities.resx">
-      <DependentUpon>201910070612144_AddActivitiesAndUserActivities.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
