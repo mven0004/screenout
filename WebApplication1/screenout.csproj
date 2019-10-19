@@ -233,6 +233,7 @@
     <Content Include="img\educate-yourself-banner_cr.jpg" />
     <Content Include="img\form.jpg" />
     <Content Include="img\game-time-banner.jpg" />
+    <Content Include="img\hidden-icon.svg" />
     <Content Include="img\home4.jpg" />
     <Content Include="img\homepageproblem.jpg" />
     <Content Include="img\homepagetodo.jpg" />
@@ -264,6 +265,7 @@
     <Content Include="img\camera-coffee-composition-1509428.jpg" />
     <Content Include="img\informationbg.jpg" />
     <Content Include="img\videocontroller.jpg" />
+    <Content Include="img\visibility-icon.svg" />
     <Content Include="Properties\plan1.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

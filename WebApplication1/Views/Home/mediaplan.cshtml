@@ -10,7 +10,7 @@
         min-height: 400px;
         background-image: url('../../img/media-plan-banner_cr.jpg');
         background-size: cover;
-        background-position: top;
+        background-position: center;
         background-repeat: no-repeat;
     }
 
@@ -78,6 +78,14 @@
     .describ {
         font-size: 25px;
     }
+
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    }
+
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    }
 </style>
 
 <!-- first part of the page- the background div -->
@@ -101,7 +109,7 @@
 <span id="featuresection"></span>
 <div class="container pt-5">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <h4 class="text-secondary">Dashboard Features</h4>
             <hr />
             <ul>
@@ -113,14 +121,14 @@
             </ul>
             @if (ViewBag.IsLoggedIn)
             {
-                @Html.ActionLink("Start now", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Start now", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-primary mb-5" })
             }
             else
             {
-                @Html.ActionLink("Start now", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Start now", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary mb-5" })
             }
         </div>
-        <div class="col-md-8 mb-3">
+        <div class="col-lg-8 mb-3">
             <h4 class="text-secondary">Dashboard Preview</h4>
             <hr />
             <div class="bd-example">

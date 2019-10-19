@@ -63,7 +63,7 @@ namespace WebApplication1.ViewModels
 
         public string GetCurAvgScreenTimeString()
         {
-            if (CurAvgScreenTime == 1)
+            if (CurAvgScreenTime == -1)
             {
                 return "No Data";
             }

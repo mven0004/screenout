@@ -16,10 +16,10 @@
         <div class="alert alert-danger">
             <h4>Warning:</h4>
             <p>
-                <strong>Are you sure you want to remove this child?</strong> The tracked times associated with
-                this child will be deleted and cannot be recovered. <br />
-                Once you click on <strong class="text-danger">Delete</strong> button, all relevant data will
-                be deleted immediately and you will be redirected to Children List.
+                <strong>Are you sure you want to remove this child?</strong> The tracked times associated with this child will be deleted and cannot be recovered.
+            </p>
+            <p>
+                Once you click on <strong class="text-danger">Delete</strong> button, all relevant data will be deleted immediately and you will be redirected to Children List.
             </p>
         </div>
     </div>
@@ -33,19 +33,19 @@
             </div>
             <div class="card-body">
                 <dl class="row">
-                    <dt class="col-md-3">
+                    <dt class="col-md-6 col-lg-4">
                         @Html.DisplayNameFor(model => model.Name)
                     </dt>
 
-                    <dd class="col-md-9">
+                    <dd class="col-md-6 col-lg-8">
                         @Html.DisplayFor(model => model.Name)
                     </dd>
 
-                    <dt class="col-md-3">
+                    <dt class="col-md-6 col-lg-4">
                         @Html.DisplayNameFor(model => model.ScreenTimeGoal)
                     </dt>
 
-                    <dd class="col-md-9">
+                    <dd class="col-md-6 col-lg-8">
                         @Html.DisplayFor(model => model.ScreenTimeGoal)
                     </dd>
                 </dl>

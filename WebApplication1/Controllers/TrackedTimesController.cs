@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
                     trackedTime.ScreenTimeGoal = selectedChild.ScreenTimeGoal;
                     db.TrackedTimes.Add(trackedTime);
                     await db.SaveChangesAsync();
-                    return RedirectToAction("Index", "Children");
+                    return RedirectToAction("Index");
                 }
             }
             catch (DataException)

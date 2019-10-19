@@ -49,6 +49,7 @@ else
     }
     <p>
         @Html.ActionLink("Add Tracking", "Create", null, htmlAttributes: new { @class = "btn btn-success" })
+        @Html.ActionLink("Go to Dashboard", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-secondary" })
     </p>
     <table class="table table-hover bg-white">
         <thead class="table-light">
@@ -92,8 +93,8 @@ else
                         @Html.DisplayFor(modelItem => item.ScreenTimeGoal)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary btn-sm mb-1", style = "width:60px;" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger btn-sm mb-1", style = "width:60px;" })
                     </td>
                 </tr>
             }

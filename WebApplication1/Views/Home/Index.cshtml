@@ -193,26 +193,26 @@
             <h2 class="hero-title text-black title1"><b>DID YOU KNOW?</b></h2>
         </div>
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card h-100">
                     <img src="../../img/did-you-know-1.png" class="card-img-top">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>The age at which habits develop in kids and unlikely change in future.</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
+            <div class="col-md-4">
+                <div class="card h-100">
                     <img src="../../img/did-you-know-2.png" class="card-img-top">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5>Developing good habits start from YOU. Child copies what you do. Be the PERFECT role model.</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
-                        <img src="../../img/did-you-know-3.png" class="card-img-top">
-                    <div class="card-body">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="../../img/did-you-know-3.png" class="card-img-top">
+                    <div class="card-body text-center">
                         <h5>Treat any failure of your child as a learning experience. Help your child be more resilient!</h5>
                     </div>
                 </div>
@@ -278,34 +278,6 @@
     </div>
 </section>
 
-
-
-
-
-<script>
-
-    function choose() {
-        var select2 = document.getElementById("inputGroupSelect02").value;
-        var select3 = document.getElementById("inputGroupSelect03");
-        //window.location.href = select.value;
-        if (select2 == "learn about")
-            select3.innerHTML = "<option value='Home/InformationOfVGA'>statistics about VGA</option>";
-        else if (select2 == "know about")
-            select3.innerHTML = "<option value='Home/QuizTest'>early signs of video game addiction</option>";
-        else
-            select3.innerHTML = "<option selected value='#'>-Please Select-</option>";
-    }
-
-    function chooseweb() {
-        var select2 = document.getElementById("inputGroupSelect02").value;
-        var select3 = document.getElementById("inputGroupSelect03").value;
-        if (select2 != "#" && select3 != "#" && select3 != null)
-            window.location.href = select3;
-        else
-            window.location.href = "#";
-
-    }
-</script>
 
 <script>
     $(document).ready(function () {

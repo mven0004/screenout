@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 using WebApplication1.ViewModels;
+using static WebApplication1.Controllers.ManageController;
 
 namespace WebApplication1.Controllers
 {
@@ -17,8 +18,12 @@ namespace WebApplication1.Controllers
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Dashboard
-        public ActionResult Index()
+        public ActionResult Index(ManageMessageId? message)
         {
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : "";
+
             // retrieve tracked data for the login user
             var userId = User.Identity.GetUserId();
             var children = db.Children.Where(child => child.UserId == userId).ToList();

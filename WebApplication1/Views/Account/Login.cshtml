@@ -10,6 +10,16 @@
         padding-left: 0;
         list-style: none;
     }
+    .visible-icon {
+       background-image: url('../../img/visibility-icon.svg');
+       width: 20px;
+       height: 20px;
+    }
+    .hidden-icon {
+        background-image: url('../../img/hidden-icon.svg');
+        width: 20px;
+        height: 20px;
+    }
 </style>
 
 <div class="container" style="padding-top: 50px;">
@@ -42,10 +52,17 @@
                             @Html.LabelFor(m => m.Password, new { @class = "" })
                         </div>
                         @*<div class="col-auto">
-                            @Html.ActionLink("Forgot password?", "ForgotPassword", null, htmlAttributes: new { @class = "form-text small text-muted" })
-                        </div>*@
+                                @Html.ActionLink("Forgot password?", "ForgotPassword", null, htmlAttributes: new { @class = "form-text small text-muted" })
+                            </div>*@
                     </div>
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                    <div class="input-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control border-right-0", placeholder = "Enter your password" })
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">
+                                <a href="#" id="showpassword-icon" class="visible-icon"></a>
+                            </span>
+                        </div>
+                    </div>
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
 
@@ -63,4 +80,20 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $("#showpassword-icon").click(function () {
+            var password_input = $("#Password");
+            if (password_input.attr("type") == "password") {
+                password_input.attr("type", "text");
+                $(this).removeClass("visibile-icon");
+                $(this).addClass("hidden-icon");
+            }
+            else {
+                password_input.attr("type", "password");
+                $(this).removeClass("hidden-icon");
+                $(this).addClass("visibile-icon");
+            }
+        });
+    </script>
 }

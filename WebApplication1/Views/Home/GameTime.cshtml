@@ -72,8 +72,8 @@
 <section class="page-section" id="services" style="background-color:#f8f9fa">
     <div class="container">
         <div class="row text-center pt-4 pb-4">
-            <div class="col-md-4">
-                <div class="card shadow p-3 bg-white rounded h-100">
+            <div class="col-lg-4 mb-1">
+                <div class="card shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="service-heading">Gamer Percentage Among Children</h4>
                         <p class="text-muted">
@@ -83,19 +83,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 bg-white rounded h-100">
+            <div class="col-lg-4 mb-1">
+                <div class="card shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="service-heading">Game and Psychological Well-being</h4>
                         <p class="text-muted">
-                            A research study in Britain suggested that children play <strong>video game within one hour</strong> can have positive effect on their psychological well-being.
-                            However, on average, most children aged 5-14 spend <strong>around 81 mins</strong> playing game daily.
+                            A study in Britain suggested playing <strong>video game within one hour</strong> can have positive effect on children's psychological well-being. However, children aged 5-14 spend <strong>around 81 mins</strong> playing game daily.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card shadow p-3 bg-white rounded h-100">
+            <div class="col-lg-4 mb-1">
+                <div class="card shadow-sm h-100">
                     <div class="card-body">
                         <h4 class="service-heading">Online Game and Bullying</h4>
                         <p class="text-muted">
@@ -178,12 +177,12 @@
         @* Interactive Graphs *@
         <div class="row mb-3 mt-3">
             @* Option Control Section *@
-            <div class="col-md-4">
+            <div class="col-md-3 col-lg-4 mb-3">
                 <div class="card bg-light">
                     <div class="card-header font-weight-bold">Interactive Charts - Filter Options</div>
                     <div class="card-body">
                         <!-- Age Group Section -->
-                        <div class="row font-weight-bold pl-3">Age Group</div>
+                        <div class="row text-muted pl-3">Age Group</div>
                         <div class="form-group row pl-3">
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input alt="1-4" class="custom-control-input" name="chk_age_group" type="checkbox" id="age_group_1" checked onchange="intraction_option_changed()" />
@@ -212,7 +211,7 @@
                         </div>
 
                         <!-- Game Session Section -->
-                        <div class="row font-weight-bold pl-3">Game Session</div>
+                        <div class="row text-muted pl-3">Game Session</div>
                         <div class="form-group row pl-3">
                             <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="game_session_both" name="rdb_game_session"
@@ -241,7 +240,7 @@
                         </div>
 
                         <!-- Year Section -->
-                        <div class="row font-weight-bold pl-3">Year</div>
+                        <div class="row text-muted pl-3">Year</div>
                         <div class="form-group row pl-3">
                             <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" class="custom-control-input" id="year_2015" checked
@@ -266,7 +265,7 @@
             </div>
 
             @* Graph Section *@
-            <div class="col-md-8">
+            <div class="col-md-9 col-lg-8">
                 @* Gamer Percentage by Age Group Graph *@
                 <div class="row pb-3 border-bottom">
                     <div id="GamerPercentageChart" class="chart"></div>

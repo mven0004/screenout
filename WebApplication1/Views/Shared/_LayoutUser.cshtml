@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body style="padding-bottom:0px">
-    <nav class="navbar navbar-dark navbar-expand-md fixed-top py-3 bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top py-2 bg-dark">
         <div class="container">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                 <img src="../../img/screenout-logo.png" width="50" height="30" class="d-inline-block align-top" alt="">
@@ -48,9 +48,9 @@
         </div>
     </nav>
 
-    <div class="container-fluid" style="padding-top: 80px;">
+    <div class="container-fluid" style="padding-top: 60px;">
         <div class="row">
-            <nav class="col-md-2 sidebar px-0">
+            <nav class="col-md-3 col-lg-2 sidebar px-0">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -99,7 +99,7 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-10 px-0 bg-light">
+            <main role="main" class="col-md-9 col-lg-10 px-0 bg-light">
                 <div class="container-fluid pt-3">
                     @RenderBody()
 
@@ -142,8 +142,8 @@
         #scroll-top {
             display: none; /* Hidden by default */
             position: fixed; /* Fixed/sticky position */
-            bottom: 20px; /* Place the button at the bottom of the page */
-            right: 30px; /* Place the button 30px from the right */
+            bottom: 15px; /* Place the button at the bottom of the page */
+            right: 15px; /* Place the button 15px from the right */
             z-index: 99; /* Make sure it does not overlap */
             cursor: pointer; /* Add a mouse pointer on hover */
         }
