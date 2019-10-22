@@ -16,6 +16,15 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            // check if user already logged in
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewBag.IsLoggedIn = true;
+            }
+            else
+            {
+                ViewBag.IsLoggedIn = false;
+            }
             return View();
         }
 

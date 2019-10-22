@@ -10,7 +10,7 @@
 <style>
     .homeimg {
         height: 70vh;
-        min-height: 400px;
+        min-height: 450px;
         background-image: url('../../img/bg_homepage.jpg');
         background-size: cover;
         background-position: center;
@@ -19,7 +19,7 @@
 
     .overlay-div {
         height: 70vh;
-        min-height: 400px;
+        min-height: 450px;
         width: 100%;
         position: absolute;
         background-color: #000;
@@ -155,7 +155,14 @@
                 <h2 class="hero-title text-white title1"><b>Is your kid always in front of a screen?</b></h2>
                 <p class="describ text-white text-center">Do you know how much harm it is causing?</p>
                 <a href="@Url.Action("ScreenTime", "Home")" class="btn btn-secondary">Learn more</a>
-                <a href="@Url.Action("Login", "Account")" class="btn btn-primary">Take action now</a>
+                @if (ViewBag.IsLoggedIn)
+                {
+                    @Html.ActionLink("Take action now", "Index", "Dashboard", null, htmlAttributes: new { @class = "btn btn-primary" })
+                }
+                else
+                {
+                    @Html.ActionLink("Take action now", "Login", "Account", null, htmlAttributes: new { @class = "btn btn-primary" })
+                }
             </div>
         </div>
     </div>

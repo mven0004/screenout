@@ -57,8 +57,15 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View();
+            }
         }
 
         //
@@ -139,7 +146,14 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         //
